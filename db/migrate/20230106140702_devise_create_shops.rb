@@ -40,7 +40,7 @@ class DeviseCreateShops < ActiveRecord::Migration[6.1]
       t.string  :phone_number, null: false
       t.string  :opening,      null: false
       t.string  :closed,       null: false
-      t.boolean :status,       null: false, default: false
+      t.boolean :is_deleted,       null: false, default: false
       
       t.timestamps null: false
     end

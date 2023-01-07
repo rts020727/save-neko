@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'public/homes#top'
-  get 'homes/about'
+  
   devise_for :shops, controllers: {
     registrations: 'owner/registrations',
     sessions: 'owner/sessions'
@@ -14,5 +13,15 @@ Rails.application.routes.draw do
     registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  root to: 'public/homes#top'
+  get 'about' => 'public/homes#about'
+  
+  #一般ユーザー
+  scope module: :public do
+    resources :users
+    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'users_unsubscribe'
+    patch '/users/:id/withdraw' => 'users#withdraw', as: 'users_withdraw'
+  end
+  
 end

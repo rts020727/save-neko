@@ -22,6 +22,14 @@ Rails.application.routes.draw do
     resources :users
     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'users_unsubscribe'
     patch '/users/:id/withdraw' => 'users#withdraw', as: 'users_withdraw'
+    resources :shops
+  end
+  
+  # 店舗オーナー
+  namespace :owner do
+    resources :shops
+    get '/shops/:id/unsubscribe' => 'shops#unsubscribe', as: 'shops_unsubscribe'
+    patch '/shops/:id/withdraw' => 'shops#withdraw', as: 'shops_withdraw'
   end
   
 end

@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 2023_01_06_140702) do
     t.string "name_kana", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
-    t.float "latitude", null: false
-    t.float "longitude", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.string "phone_number", null: false
     t.string "opening", null: false
     t.string "closed", null: false

@@ -3,14 +3,14 @@
     <div class="col-sm-12 d-flex justify-content-center text-align-center">
       <div>
         <h3 class="mt-5 mb-5 text-center">本当に退会しますか？</h3>
-        <p class="text-center">退会すると、ブックマークした店舗情報や、いいね履歴などが閲覧できなくなります。</p>
+        <p class="text-center">退会すると、店舗情報や投稿が閲覧できなくなります。</p>
         <p class="text-center">退会する場合は「退会する」をクリックしてください。</p>
         
         <div class="text-center mt-5">
-          <!--ユーザーがログインしている、かつログインユーザーであるか？-->
-          <% if user_signed_in? && @user.id == current_user.id %>
+          <!--店舗オーナーがログインしている、かつログインユーザーであるか？-->
+          <% if shop_signed_in? && @shop.id == current_shop.id %>
             <%= link_to '退会しない', root_path, class: 'btn btn-outline-info mr-5' %>
-            <%= link_to '退会', users_withdraw_path(current_user), method: :patch, 'data-confirm' => '本当に退会しますか？', class: 'btn btn-outline-danger ml-5' %>
+            <%= link_to '退会', owner_shops_withdraw_path(current_shop), method: :patch, 'data-confirm' => '本当に退会しますか？', class: 'btn btn-outline-danger ml-5' %>
           <% end %>
         </div>
       </div>

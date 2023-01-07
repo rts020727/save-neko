@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2023_01_06_140702) do
     t.string "phone_number", null: false
     t.string "opening", null: false
     t.string "closed", null: false
-    t.boolean "status", default: false, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_shops_on_email", unique: true
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2023_01_06_140702) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.boolean "status", default: false, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

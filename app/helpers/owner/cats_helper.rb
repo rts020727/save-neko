@@ -1,0 +1,2 @@
+module Owner::CatsHelper
+end

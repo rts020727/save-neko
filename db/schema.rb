@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2023_01_08_044257) do
   create_table "cats", force: :cascade do |t|
     t.integer "shop_id", null: false
     t.string "name", null: false
-    t.integer "sex", null: false
+    t.integer "gender", null: false
     t.integer "feature", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

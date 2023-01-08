@@ -1,0 +1,20 @@
+ja:
+  enums:
+    cat:
+      gender_select:
+        boy: '男の子'
+        girl: '女の子'
+      feature_select:
+        white: '白'
+        black: '黒'
+        gray: 'グレー'
+        brown_tabby: 'キジトラ'
+        silver_tabby: 'サバトラ'
+        red_tabby: '茶トラ'
+        brack_white: '白黒'
+        calico: '三毛'
+        tortoiseshell: 'サビ'
+        brown_white_tabby: 'キジ白'
+        silver_white_tabby: 'サバ白'
+        red_white_tabby: '茶白'
+        etc: 'その他'

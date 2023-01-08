@@ -24,11 +24,11 @@
             <td><%= @cat.introduction %></td>
           </tr>
           <tr>
-            <td><%= link_to '編集', edit_owner_shop_cat_path(@cat.id) %></td>
-            <td><%= link_to '卒業', owner_shop_cat_path(@cat.id), method: :delete %></td>
+            <td><%= link_to '編集', edit_owner_cat_path(@cat.id) %></td>
+            <td><%= link_to '卒業', owner_cat_path(@cat.id), method: :delete %></td>
           </tr>
         </table>
-        <%= link_to '一覧へ', owner_shop_cats_path %>
+        <%= link_to '一覧へ', owner_cats_path %>
       </div>
     </div>
   </div>

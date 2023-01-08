@@ -21,8 +21,8 @@
           <td><%= cat.gender %></td>
           <td><%= cat.feature %></td>
           <td><%= cat.introduction %></td>
-          <td><%= link_to '編集', edit_owner_shop_cat_path(current_shop, cat) %></td>
-          <td><%= link_to '卒業', owner_shop_cat_path(current_shop, cat), method: :delete %></td>
+          <td><%= link_to '編集', edit_owner_cat_path(cat) %></td>
+          <td><%= link_to '卒業', owner_cat_path(cat), method: :delete %></td>
         </tr>
         <% end %>
       </table>

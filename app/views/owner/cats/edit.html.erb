@@ -2,7 +2,7 @@
   <div class='row justify-content-center'>
     <div class='col-md-4'>
       <h3>在籍ねこ情報編集</h3>
-      <%= form_with model: @cat, url: owner_shop_cat_path(@cat.id), method: :patch do |f| %>
+      <%= form_with model: @cat, url: owner_cat_path(@cat.id), method: :patch do |f| %>
       <div>
         <table class='table table-sm text-center'>
           <tr>
@@ -31,7 +31,7 @@
           </tr>
         </table>
         <% end %>
-        <%= link_to '一覧へ', owner_shop_cats_path %>
+        <%= link_to '一覧へ', owner_cats_path %>
       </div>
     </div>
   </div>

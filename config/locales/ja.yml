@@ -1,10 +1,10 @@
 ja:
   enums:
     cat:
-      gender_select:
+      gender:
         boy: '男の子'
         girl: '女の子'
-      feature_select:
+      feature:
         white: '白'
         black: '黒'
         gray: 'グレー'

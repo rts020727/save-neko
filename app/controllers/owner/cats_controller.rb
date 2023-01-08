@@ -10,7 +10,7 @@ class Owner::CatsController < ApplicationController
     @cat = Cat.new(cat_params)
     @cat.shop_id = current_shop.id
     if @cat.save
-      redirect_to owner_shop_cat_path(current_shop, @cat)
+      redirect_to owner_cat_path(@cat)
     else
       @cats = Cat.all
       render :index
@@ -29,7 +29,7 @@ class Owner::CatsController < ApplicationController
   def update
     @cat = Cat.find(params[:id])
     if @cat.update(cat_params)
-      redirect_to owner_shop_cat_path(carrent_shop, @cat)
+      redirect_to owner_cat_path(@cat)
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class Owner::CatsController < ApplicationController
   def destroy
     @cat = Cat.find(params[:id])
     @cat.destroy
-    redirect_to owner_shop_cats_path
+    redirect_to owner_cats_path
   end
   
   private

@@ -32,4 +32,10 @@ Rails.application.routes.draw do
     patch '/shops/:id/withdraw' => 'shops#withdraw', as: 'shops_withdraw'
   end
   
+  # サイト管理者
+  namespace :admin do
+    resources :users
+    resources :shops
+  end
+  
 end

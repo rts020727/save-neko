@@ -1,2 +1,58 @@
-<h1>Owner::Shops#edit</h1>
-<p>Find me in app/views/owner/shops/edit.html.erb</p>
+<div class='container-fluid'>
+  <div class='row justify-content-center'>
+    <div class='col-sm-6'>
+      <div>
+        <h3 class="mb-5 mt-5">店舗情報編集</h3>
+
+        <%= form_with model: @shop, url: owner_shop_path(@shop), method: :patch do |f| %>
+          <table class="table table-borderless table-sm">
+            <tr>
+              <td style="width: 40%"><%= f.label :name, '店舗名' %></td>
+              <td style="width: 60%%"><%= f.text_field :name, class: 'form-control' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :name_kana, '店舗名(ふりがな）' %></td>
+              <td><%= f.text_field :name_kana, class: 'form-control' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :email, 'メールアドレス' %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :postal_code, '郵便番号' %></td>
+              <td><%= f.text_field :postal_code, class: 'form-control' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :address, '住所' %></td>
+              <td><%= f.text_field :address, class: 'form-control' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :phone_number, '電話番号' %></td>
+              <td><%= f.text_field :phone_number, class: 'form-control' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :opening, '営業日' %></td>
+              <td><%= f.text_field :opening, class: 'form-control' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :closed, '定休日' %></td>
+              <td><%= f.text_field :closed, class: 'form-control' %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :shop_image, '店舗画像' %></td>
+              <td><%= f.file_field :shop_image %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <%= f.submit '編集', class: 'btn btn-outline-secondary ml-5' %>
+                <%= link_to '退会する', owner_shops_unsubscribe_path, class: 'btn btn-outline-danger ml-5' %>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+
+      </div>
+　　</div>
+  </div>
+</div>

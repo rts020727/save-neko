@@ -1,2 +1,38 @@
-<h1>Owner::Cats#edit</h1>
-<p>Find me in app/views/owner/cats/edit.html.erb</p>
+<div class='container-fluid'>
+  <div class='row justify-content-center'>
+    <div class='col-md-4'>
+      <h3>在籍ねこ情報編集</h3>
+      <%= form_with model: @cat, url: owner_shop_cat_path(@cat.id), method: :patch do |f| %>
+      <div>
+        <table class='table table-sm text-center'>
+          <tr>
+            <td style='width: 30%'>写真</td>
+            <td style='width: 50%'><%= f.file_field :cat_image %></td>
+          </tr>
+          <tr>
+            <td>名前</td>
+            <td><%= f.text_field :name, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td>性別</td>
+            <td><%= f.select :gender, Cat.genders_i18n.invert,{ }, {class: 'form-control'} %></td>
+          </tr>
+          <tr>
+            <td>種類</td>
+            <td><%= f.select :feature, Cat.features_i18n.invert,{ }, {class: 'form-control'} %></td>
+          </tr>
+          <tr>
+            <td>紹介文</td>
+            <td><%= f.text_area :introduction, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit '登録' %></td>
+          </tr>
+        </table>
+        <% end %>
+        <%= link_to '一覧へ', owner_shop_cats_path %>
+      </div>
+    </div>
+  </div>
+</div>

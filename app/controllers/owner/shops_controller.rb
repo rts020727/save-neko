@@ -1,4 +1,6 @@
 class Owner::ShopsController < ApplicationController
+  before_action :authenticate_shop!
+  
   def index
   end
 

@@ -1,2 +1,35 @@
-<h1>Owner::Cats#show</h1>
-<p>Find me in app/views/owner/cats/show.html.erb</p>
+<div class='container-fluid'>
+  <div class='row justify-content-center'>
+    <div class='col-md-4'>
+      <%= render 'form', cat: @cat_new %>
+    </div>
+    <div class='col-md-6'>
+      <div class='d-flex justify-content-center'><%= image_tag @cat.get_cat_image(200,200) %></div>
+      <div>
+        <table class='table table-sm text-center'>
+          <tr>
+            <td>名前</td>
+            <td><%= @cat.name %></td>
+          </tr>
+          <tr>
+            <td>性別</td>
+            <td><%= @cat.gender_i18n %></td>
+          </tr>
+          <tr>
+            <td>種類</td>
+            <td><%= @cat.feature_i18n %></td>
+          </tr>
+          <tr>
+            <td>紹介文</td>
+            <td><%= @cat.introduction %></td>
+          </tr>
+          <tr>
+            <td><%= link_to '編集', edit_owner_shop_cat_path(@cat.id) %></td>
+            <td><%= link_to '卒業', owner_shop_cat_path(@cat.id), method: :delete %></td>
+          </tr>
+        </table>
+        <%= link_to '一覧へ', owner_shop_cats_path %>
+      </div>
+    </div>
+  </div>
+</div>

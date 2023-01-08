@@ -1,8 +1,9 @@
 class Owner::CatsController < ApplicationController
+  before_action :authenticate_shop!
   
   def index
-    @cat = Cat.new
-    @cats = Cat.all
+    @cat_new = Cat.new
+    @cats = current_shop.cats
   end
   
   def create
@@ -17,6 +18,7 @@ class Owner::CatsController < ApplicationController
   end
 
   def show
+    @cat_new = Cat.new
     @cat = Cat.find(params[:id])
   end
 
@@ -33,9 +35,19 @@ class Owner::CatsController < ApplicationController
     end
   end
   
+  def destroy
+    @cat = Cat.find(params[:id])
+    @cat.destroy
+    redirect_to owner_shop_cats_path
+  end
+  
   private
   
   def cat_params
     params.require(:cat).permit(:name, :gender, :feature, :introduction, :cat_image)
+  end
+  
+  def redirect_root
+    redirect_to root_path unless shop_signed_in?
   end
 end

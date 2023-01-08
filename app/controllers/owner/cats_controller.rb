@@ -1,6 +1,10 @@
 class Owner::CatsController < ApplicationController
   before_action :authenticate_shop!
   
+  def new
+    @cat = Cat.new
+  end
+  
   def index
     @cat_new = Cat.new
     @cats = current_shop.cats

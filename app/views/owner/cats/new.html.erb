@@ -1,0 +1,40 @@
+<div class='container-fluid'>
+  <div class='row justify-content-center'>
+    <div class='col-md-4'>
+      <h3 class='mb-3'>在籍ねこ 新規登録</h3>
+      <%= form_with model: @cat, url: owner_cats_path, method: :post do |f| %>
+      <div>
+        <table class='table text-center table-borderless'>
+          <tr>
+            <td style='width: 30%'>写真</td>
+            <td style='width: 50%'><%= f.file_field :cat_image %></td>
+          </tr>
+          <tr>
+            <td>名前</td>
+            <td><%= f.text_field :name, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td>性別</td>
+            <td><%= f.select :gender, Cat.genders_i18n.invert,{ }, {class: 'form-control'} %></td>
+          </tr>
+          <tr>
+            <td>種類</td>
+            <td><%= f.select :feature, Cat.features_i18n.invert,{ }, {class: 'form-control'} %></td>
+          </tr>
+          <tr>
+            <td>紹介文</td>
+            <td><%= f.text_area :introduction, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit '新規登録する', class: 'btn btn-sm btn-outline-secondary' %></td>
+          </tr>
+        </table>
+        <% end %>
+        <div class="col-12 clearfix">
+          <div class="float-right"><%= link_to '一覧へもどる', owner_cats_path, class: 'btn btn-sm btn-outline-secondary' %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

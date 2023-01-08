@@ -1,10 +1,10 @@
 <div class='container-fluid'>
   <div class='row justify-content-center'>
     <div class='col-md-4'>
-      <h3>在籍ねこ情報編集</h3>
+      <h3 class='mb-3'>在籍ねこ 編集</h3>
       <%= form_with model: @cat, url: owner_cat_path(@cat.id), method: :patch do |f| %>
       <div>
-        <table class='table table-sm text-center'>
+        <table class='table text-center table-borderless'>
           <tr>
             <td style='width: 30%'>写真</td>
             <td style='width: 50%'><%= f.file_field :cat_image %></td>
@@ -27,11 +27,13 @@
           </tr>
           <tr>
             <td></td>
-            <td><%= f.submit '登録' %></td>
+            <td><%= f.submit '編集を保存する', class: 'btn btn-sm btn-outline-secondary' %></td>
           </tr>
         </table>
         <% end %>
-        <%= link_to '一覧へ', owner_cats_path %>
+        <div class="col-12 clearfix">
+          <div class="float-right"><%= link_to '一覧へもどる', owner_cats_path, class: 'btn btn-sm btn-outline-secondary' %></div>
+        </div>
       </div>
     </div>
   </div>

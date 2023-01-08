@@ -4,4 +4,10 @@ class Public::HomesController < ApplicationController
 
   def about
   end
+  
+  def signup
+  end
+  
+  def login
+  end
 end

@@ -6,6 +6,6 @@ class User < ApplicationRecord
   
   # userのis_deletedがfalseならtrueを返す
   def active_for_authentication?
-    super && (is_deleted == false)
+    super && (self.is_deleted == false)
   end
 end

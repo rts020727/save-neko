@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
+  get 'signup' => 'public/homes#signup', as: 'signup'
+  get 'login' => 'public/homes#login', as: 'login'
   
   #一般ユーザー
   scope module: :public do

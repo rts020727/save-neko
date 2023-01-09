@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row d-flex justify-content-center" style='margin-top: 50px'>
+    <div class="col-md-6">
+
+      <div class="card mb-4 shadow-sm">
+        <div class="bd-placeholder-img card-img-top">
+          <%= image_tag @photo.get_image, class: "img-fluid img" %>
+        </div>
+        <div class="card-body">
+          <h4><%= @photo.title %></h4>
+          <p class="card-text text-truncate">
+            <%= @photo.content %>
+          </p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              
+            </div>
+            <small class="text-muted">投稿日：<%= @photo.created_at.strftime('%Y年%m月%d日') %></small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 clearfix">
+        <div class="float-right"><%= link_to '一覧へもどる', photos_path, class: 'btn btn-sm btn-outline-secondary' %></div>
+      </div>
+
+    </div>
+  </div>
+</div>

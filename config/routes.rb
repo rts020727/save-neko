@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     get '/shops/:id/unsubscribe' => 'shops#unsubscribe', as: 'shops_unsubscribe'
     patch '/shops/:id/withdraw' => 'shops#withdraw', as: 'shops_withdraw'
     resources :cats
+    resources :photos
   end
 
   # サイト管理者

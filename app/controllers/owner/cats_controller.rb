@@ -6,7 +6,6 @@ class Owner::CatsController < ApplicationController
   end
   
   def index
-    @cat_new = Cat.new
     @cats = current_shop.cats
   end
   
@@ -14,15 +13,14 @@ class Owner::CatsController < ApplicationController
     @cat = Cat.new(cat_params)
     @cat.shop_id = current_shop.id
     if @cat.save
-      redirect_to owner_cat_path(@cat)
+      redirect_to owner_cat_path(@cat.id)
     else
-      @cats = Cat.all
+      @cats = current_shop.cats
       render :index
     end
   end
 
   def show
-    @cat_new = Cat.new
     @cat = Cat.find(params[:id])
   end
 
@@ -33,7 +31,7 @@ class Owner::CatsController < ApplicationController
   def update
     @cat = Cat.find(params[:id])
     if @cat.update(cat_params)
-      redirect_to owner_cat_path(@cat)
+      redirect_to owner_cat_path(@cat.id)
     else
       render :edit
     end

@@ -1,22 +1,21 @@
 <div class='container-fluid'>
-  <div class='row content-wrapper'>
-    <div class='col d-flex justify-content-center align-items-center'>
-      <div>
-      <h2 class="">LOG IN</h2>
+  <div class='row justify-content-center'>
+    <div class='col-md-6 text-center'>
+      <h2 class="mb-4">ユーザー -LOG IN-</h2>
 
       <%= flash[:error] %>
-      
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email, 'メールアドレス' %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password, 'パスワード' %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
-
+      <table class='table table-borderless'>
+        <tr>
+          <td><%= f.label :email, 'メールアドレス' %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password, 'パスワード' %></td>
+          <td><%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %></td>
+        </tr>
+      </table>
         <% if devise_mapping.rememberable? %>
           <div class="field">
             <%= f.check_box :remember_me %>
@@ -25,12 +24,11 @@
         <% end %>
 
         <div class="actions">
-          <%= f.submit "LOG IN" %>
+          <%= f.submit "LOG IN", class: 'btn btn-secondary mt-3' %>
         </div>
       <% end %>
 
       <%= render "public/shared/links" %>
-      </div>
     </div>
   </div>
 </div>

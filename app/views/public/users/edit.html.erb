@@ -1,0 +1,27 @@
+<div class='container-fluid'>
+  <div class='row justify-content-center'>
+    <div class='col-md-6 text-center'>
+
+      <h2 class='mb-4'>-MY PAGE編集-</h2>
+      <%= form_with model: @user, url: user_path(current_user.id), method: :patch do |f| %>
+      <table class='table table-borderless'>
+        <tr>
+          <td><%= f.label :name, '名前' %></td>
+          <td><%= f.text_field :name, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :email, 'メールアドレス' %></td>
+          <td><%= f.email_field :email, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <td>ユーザープロフィール写真</td>
+          <td><%= f.file_field :image %></td>
+        </tr>
+      </table>
+        <%= f.submit '保存する', class: 'btn btn-secondary mt-3 mr-5' %>
+        <%= f.submit '退会する', class: 'btn btn-danger mt-3' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

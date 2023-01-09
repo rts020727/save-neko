@@ -1,34 +1,43 @@
-<h2>SIGN UP</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :name, '名前' %><br />
-    <%= f.text_field :name %>
+<div class='container-fluid'>
+  <div class='row justify-content-center'>
+    <dic class='col-md-6 text-center'>
+      <h2 class='mb-4'>ユーザー -SIGN UP-</h2>
+      
+      <%= flash[:error] %> 
+      
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+      
+      <table class='table table-borderless'>
+        <tr>
+          <td><%= f.label :name, '名前' %></td>
+          <td><%= f.text_field :name, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :email, 'メールアドレス' %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :password, 'パスワード' %>
+            <% if @minimum_password_length %>
+            <span>(<%= @minimum_password_length %> 文字以上)</span>
+            <% end %>
+          </td>
+          <td><%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password_confirmation, 'パスワード確認用' %></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %></td>
+        </tr>
+      </table>
+      <div class="actions">
+        <%= f.submit "SIGN UP", class: 'btn btn-secondary mt-3' %>
+      </div>
+      <% end %>
+      <%= render "public/shared/links" %>
+    </dic>
   </div>
-  
-  <div class="field">
-    <%= f.label :email, 'メールアドレス' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password, 'パスワード' %>
-    <% if @minimum_password_length %>
-    <span>(<%= @minimum_password_length %> 文字以上)</span>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, 'パスワード確認用' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>

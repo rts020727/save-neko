@@ -24,10 +24,9 @@ body {
 
 header {
   background-color: #f37053;
-  margin: 20px;
 }
 
-.nav-item {
+.nav-item, .navbar-brand {
   font-family: 'Train One', cursive;
   font-size: 20px;
   padding-right: 15px;
@@ -36,12 +35,12 @@ header {
 main {
   background-color: #c7e7cc;
   min-height: 75vh;
-  margin: 20px;
-  padding: 20px;
+  padding: 50px;
 }
 
 .card {
   border-radius: 30px;
+  background-color: #faf3e5;
 }
 
 .card .img {
@@ -50,3 +49,6 @@ main {
   object-fit: cover;
 }
 
+.shop-box {
+  background-color: #faf3e5;
+}

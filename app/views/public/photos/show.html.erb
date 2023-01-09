@@ -8,22 +8,18 @@
         </div>
         <div class="card-body">
           <h4><%= @photo.title %></h4>
+          <p>店舗名：<span class='h4'><%= link_to @photo.shop.name, shop_path(@photo.shop_id), class: 'badge badge-light' %></span></p>
+          
           <p class="card-text text-truncate">
             <%= @photo.content %>
           </p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              
-            </div>
-            <small class="text-muted">投稿日：<%= @photo.created_at.strftime('%Y年%m月%d日') %></small>
+          <small class="text-muted"><p class='text-right'>投稿日：<%= @photo.created_at.strftime('%Y年%m月%d日') %></p></small>
           </div>
         </div>
       </div>
-
       <div class="col-12 clearfix">
-        <div class="float-right"><%= link_to '一覧へもどる', photos_path, class: 'btn btn-sm btn-outline-secondary' %></div>
+        <div class="float-right"><%= link_to '一覧へもどる', photos_path, class: 'btn btn-sm btn-secondary' %></div>
       </div>
-
     </div>
   </div>
 </div>

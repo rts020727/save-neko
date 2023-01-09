@@ -1,0 +1,8 @@
+<div class='container'>
+  <h1 class='text-center'>店舗一覧</h1>
+  <% @shops.each do |shop| %>
+    <%= link_to shop_path(shop.id), class: 'text-decoration-none text-reset' do %>
+      <%= render 'shop', shop: shop %>
+    <% end %>
+  <% end %>
+</div>

@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'users_unsubscribe'
     patch '/users/:id/withdraw' => 'users#withdraw', as: 'users_withdraw'
-    resources :shops
     resources :photos, only: [:index, :show]
     resources :shops, only: [:index, :show]
   end

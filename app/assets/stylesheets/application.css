@@ -27,6 +27,12 @@ header {
   margin: 20px;
 }
 
+.nav-item {
+  font-family: 'Train One', cursive;
+  font-size: 20px;
+  padding-right: 15px;
+}
+
 main {
   background-color: #c7e7cc;
   min-height: 75vh;

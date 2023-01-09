@@ -8,6 +8,7 @@
           </div>
           <div class="card-body">
             <h4><%= photo.title %></h4>
+            <p>店舗名：<span class='h4'><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'badge badge-light' %></span></p>
             <p class="card-text text-truncate">
               <%= photo.content %>
             </p>

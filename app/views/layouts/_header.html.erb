@@ -1,4 +1,4 @@
-<div style='margin-bottom: 20px'>
+<div>
   <nav class='navbar navbar-expand-lg navbar-light'>
     <div class='container'>
       <a class='navbar-brand p-3' href='/'>SAVE neko</a>
@@ -37,7 +37,7 @@
             <%= link_to '店舗検索', class: 'nav-link text-dark' %>
           </li>
           <li class='nav-item'>
-            <%= link_to '店舗一覧', class: 'nav-link text-dark' %>
+            <%= link_to '店舗一覧', shops_path, class: 'nav-link text-dark' %>
           </li>
           <li class='nav-item'>
             <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
@@ -47,7 +47,7 @@
             <%= link_to 'ABOUT', about_path, class: 'nav-link text-dark' %>
           </li>
           <li class='nav-item'>
-            <%= link_to 'ねこの日常', class: 'nav-link text-dark' %>
+            <%= link_to 'ねこの日常', shops_path, class: 'nav-link text-dark' %>
           </li>
           <li class='nav-item'>
             <%= link_to '店舗検索', class: 'nav-link text-dark' %>

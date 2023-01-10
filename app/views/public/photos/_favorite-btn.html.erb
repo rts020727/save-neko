@@ -1,0 +1,9 @@
+<% if photo.favorited_by?(current_user) %>
+  <%= link_to photo_favorites_path(photo), method: :delete, remote: true, class: "text-decoration-none text-danger", data: {"turbolinks" => false} do %>
+    <i class="fas fa-heart"></i>
+  <% end %>
+<% else %>
+  <%= link_to photo_favorites_path(photo), method: :post, remote: true, class: "text-decoration-none text-danger", data: {"turbolinks" => false} do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+<% end %>

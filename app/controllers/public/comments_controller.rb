@@ -1,10 +1,14 @@
 class Public::CommentsController < ApplicationController
   def create
-    photo = Photo.find(params[:photo_id])
+    @photo = Photo.find(params[:photo_id])
     comment = current_user.comments.new(comment_params)
     comment.photo_id = photo.id
     comment.save
-    redirect_to photo_path(photo)
+  end
+  
+  def destroy
+    @photo = Photo.find(params[:photo_id])
+    comment.destroy
   end
   
   private

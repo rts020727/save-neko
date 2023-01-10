@@ -1,1 +1,2 @@
 $(".favorite-btn<%= @photo.id %>").html("<%= j(render "public/photos/favorite-btn", photo: @photo) %>");
+$(".favorite-btn-count<%= @photo.id %>").html("いいね数：<%= @photo.favorites.count %>");

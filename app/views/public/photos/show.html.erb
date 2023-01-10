@@ -17,7 +17,8 @@
           </p>
           <small>
             <p class="text-center">
-              コメント数：<%= @photo.comments.count %>　　いいね数：<%= @photo.favorites.count %>
+              <span class=<%= "comment-count" + @photo.id.to_s %>>コメント数：<%= @photo.comments.count %></span>
+              <span class=<%= "favorite-btn-count" + @photo.id.to_s %>>いいね数：<%= @photo.favorites.count %></span>
               <span class="ml-5">
                 投稿日：<%= @photo.created_at.strftime("%Y年%m月%d日") %>
               </span>
@@ -29,20 +30,8 @@
   </div>
 
   <div class="row d-flex justify-content-center">
-    <div class="col-md-7">
-      <% @photo.comments.each do |comment| %>
-      <div class="row position-relative justify-content-center shadow m-5 bg-white">
-        <div class="col-md-4 p-md-4 text-center">
-          <%= image_tag comment.user.get_image(100,100), class: "bd-placeholder-img w-75 rounded m-3" %>
-        </div>
-        <div class="col-md-8 position-static p-4 pl-md-0 text-left">
-          <div class="ml-3">
-            <p class="mt-4">-<%= comment.user.name %>さんのコメント-</p>
-            <p class="mx-2"><%= safe_join(comment.photo_comment.split("\n"), tag(:br)) %></p>
-          </div>
-        </div>
-      </div>
-      <% end %>
+    <div class="col-md-7 <%= "comment-index" + @photo.id.to_s %>">
+      <%= render "comment", photo: @photo %>
     </div>
   </div>
 

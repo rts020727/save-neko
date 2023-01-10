@@ -9,16 +9,16 @@
           </div>
           <div class="card-body">
             <h4><%= photo.title %></h4>
-            <p>店舗名：<span class='h4'><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'badge badge-light' %></span>
-            <p class=<%= "favorite-btn" + photo.id.to_s %>><%= render "favorite-btn", photo: photo %>
-            </p>
+            <p>店舗名：<span class='h4'><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'badge badge-light mr-3' %></span>
+            <span class=<%= "favorite-btn" + photo.id.to_s %>>
+              <%= render "favorite-btn", photo: photo %>
+            </span>
             <p class="card-text text-truncate">
               <%= photo.content %>
             </p>
             <div class="d-flex justify-content-between align-items-center">
-              <small>
-                コメント数：<%= photo.comments.count %>　　いいね数：<%= photo.favorites.count %>
-              </small>
+              <small class=<%= "comment-count" + photo.id.to_s %>>コメント数：<%= photo.comments.count %></small>
+              <small class=<%= "favorite-btn-count" + photo.id.to_s %>>いいね数：<%= photo.favorites.count %></small>
               <%= link_to '詳細', photo_path(photo.id), class: 'btn btn-sm btn-info' %>
             </div>
           </div>

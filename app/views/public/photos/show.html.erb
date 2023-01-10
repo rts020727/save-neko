@@ -1,7 +1,7 @@
 <div class="container">
-  <h1 class='text-center'>ねこの日常　詳細</h1>
+  <h1 class="text-center">ねこの日常　詳細</h1>
 
-  <div class="row d-flex justify-content-center" style='margin-top: 50px'>
+  <div class="row d-flex justify-content-center" style="margin-top: 50px">
     <div class="col-md-6">
       <div class="card mb-4 shadow-sm">
         <div class="bd-placeholder-img card-img-top">
@@ -9,11 +9,11 @@
         </div>
         <div class="card-body">
           <h4><%= @photo.title %></h4>
-          <p>店舗名：<span class='h4'><%= link_to @photo.shop.name, shop_path(@photo.shop_id), class: 'badge badge-light' %></span></p>
+          <p>店舗名：<span class="h4"><%= link_to @photo.shop.name, shop_path(@photo.shop_id), class: "badge badge-light" %></span></p>
           <p class="card-text text-truncate">
             <%= @photo.content %>
           </p>
-          <small class="text-muted"><p class='text-right'>投稿日：<%= @photo.created_at.strftime('%Y年%m月%d日') %></p></small>
+          <small class="text-muted"><p class="text-right">投稿日：<%= @photo.created_at.strftime("%Y年%m月%d日") %></p></small>
         </div>
       </div>
     </div>
@@ -22,12 +22,12 @@
   <div class="row d-flex justify-content-center">
     <div class="col-md-7">
       <% @photo.comments.each do |comment| %>
-      <div class='row position-relative justify-content-center shadow m-5 bg-white'>
+      <div class="row position-relative justify-content-center shadow m-5 bg-white">
         <div class="col-md-4 p-md-4 text-center">
           <%= image_tag comment.user.get_image(100,100), class: "bd-placeholder-img w-75 rounded m-3" %>
         </div>
         <div class="col-md-8 position-static p-4 pl-md-0 text-left">
-          <div class='ml-3'>
+          <div class="ml-3">
             <p class="mt-4">-<%= comment.user.name %>さんのコメント-</p>
             <p class="mx-2"><%= safe_join(comment.photo_comment.split("\n"), tag(:br)) %></p>
           </div>
@@ -37,16 +37,16 @@
     </div>
   </div>
 
-  <div class='row d-flex justify-content-center'>
-    <div class='col-md-5'>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-5">
       <%= form_with model: [@photo, @comment], url: photo_comments_path(@photo), method: :post do |f| %>
-        <%= f.text_area :photo_comment, placeholder: 'ぜひコメントしてください！', class: 'form-control m-3' %>
-        <p class='text-right'><%= f.submit '送信する', class: 'btn btn-info' %></p>
+        <%= f.text_area :photo_comment, placeholder: "ぜひコメントしてください！", class: "form-control m-3" %>
+        <p class="text-right"><%= f.submit "送信する", class: "btn btn-info" %></p>
       <% end %>
     </div>
   </div>
   <div class="col-12 clearfix">
-    <div class="float-right"><%= link_to '一覧へもどる', photos_path, class: 'btn btn-sm btn-secondary' %></div>
+    <div class="float-right"><%= link_to "一覧へもどる", photos_path, class: "btn btn-sm btn-secondary" %></div>
   </div>
-  
+
 </div>

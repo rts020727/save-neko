@@ -20,10 +20,14 @@ h1 {
 
 body {
   font-family: 'M PLUS Rounded 1c', sans-serif;
+  min-height: 100vh;
+  background-color: #c7e7cc;
+  position: relative;
 }
 
 header {
   background-color: #f37053;
+
 }
 
 .nav-item, .navbar-brand {
@@ -33,9 +37,15 @@ header {
 }
 
 main {
-  background-color: #c7e7cc;
-  min-height: 75vh;
-  padding: 50px;
+  padding: 50px 0 100px;
+}
+
+footer {
+  background-color: #627da1;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 15px;
 }
 
 .card {

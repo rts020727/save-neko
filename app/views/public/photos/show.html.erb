@@ -19,17 +19,23 @@
     </div>
   </div>
 
-  <% @photo.comments.each do |comment| %>
-  <div class='row d-flex justify-content-center m-3'>
-    <div class='col-md-5 bg-white d-flex'>
-      <div><%= image_tag comment.user.get_image(100,100), class: 'img-fluid m-3' %></div>
-      <div>
-        <p class='m-3'>-<%= comment.user.name %>さんのコメント-</p>
-        <p><%= safe_join(comment.photo_comment.split("\n"), tag(:br)) %></p>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-7">
+      <% @photo.comments.each do |comment| %>
+      <div class='row position-relative justify-content-center shadow m-5 bg-white'>
+        <div class="col-md-4 p-md-4 text-center">
+          <%= image_tag comment.user.get_image(100,100), class: "bd-placeholder-img w-75 rounded m-3" %>
+        </div>
+        <div class="col-md-8 position-static p-4 pl-md-0 text-left">
+          <div class='ml-3'>
+            <p class="mt-4">-<%= comment.user.name %>さんのコメント-</p>
+            <p class="mx-2"><%= safe_join(comment.photo_comment.split("\n"), tag(:br)) %></p>
+          </div>
+        </div>
       </div>
+      <% end %>
     </div>
   </div>
-  <% end %>
 
   <div class='row d-flex justify-content-center'>
     <div class='col-md-5'>
@@ -42,4 +48,5 @@
   <div class="col-12 clearfix">
     <div class="float-right"><%= link_to '一覧へもどる', photos_path, class: 'btn btn-sm btn-secondary' %></div>
   </div>
+  
 </div>

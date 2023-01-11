@@ -3,10 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
   has_one_attached :image
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -14,7 +16,7 @@ class User < ApplicationRecord
     end
       image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   # userのis_deletedがfalseならtrueを返す
   def active_for_authentication?
     super && (self.is_deleted == false)

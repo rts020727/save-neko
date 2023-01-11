@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     patch '/users/:id/withdraw' => 'users#withdraw', as: 'users_withdraw'
     resources :photos, only: [:index, :show] do
       resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
     resources :shops, only: [:index, :show]
   end

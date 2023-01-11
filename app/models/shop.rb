@@ -6,6 +6,7 @@ class Shop < ApplicationRecord
   
   has_many :cats, dependent: :destroy
   has_many :photos, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   has_one_attached :shop_image
   
   
@@ -22,5 +23,9 @@ class Shop < ApplicationRecord
   # shopのis_deletedがfalseならtrueを返す
   def active_for_authentication?
     super && (self.is_deleted == false)
+  end
+  
+  def bookmarked_by?(user)
+    bookmarks.exists?(user_id: user.id)
   end
 end

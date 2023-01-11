@@ -28,7 +28,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :shops, only: [:index, :show]
+    resources :shops, only: [:index, :show] do
+      resource :bookmarks, only: [:create, :destroy]
+    end
   end
 
   # 店舗オーナー

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     patch '/shops/:id/withdraw' => 'shops#withdraw', as: 'shops_withdraw'
     resources :cats
     resources :photos
+    resources :events
   end
 
   # サイト管理者

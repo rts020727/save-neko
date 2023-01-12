@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-5">
+      <h3 class="mb-5 text-center">-<%= @user.name + "さんの登録情報の編集" %>-</h3>
+      <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+      <table class="table">
+        <tr>
+          <td>ユーザーID</td>
+          <td><%= f.text_field :name, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.email_field :email, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td>登録状況</td>
+          <td>
+            <%= f.radio_button :is_deleted, false %>
+            <%= f.label :is_deleted_false, "登録中" %>
+            <%= f.radio_button :is_deleted, true %>
+            <%= f.label :is_deleted_true, "退会済み" %>
+          </td>
+        </tr>
+      </table>
+      <div class="text-center mt-5">
+        <%= f.submit "保存する", class: "btn btn-secondary mr-5" %>
+        <%= link_to "ユーザー一覧へ戻る", admin_users_path, class: "btn btn-info ml-5" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

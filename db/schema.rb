@@ -79,9 +79,9 @@ ActiveRecord::Schema.define(version: 2023_01_08_044257) do
 
   create_table "events", force: :cascade do |t|
     t.integer "shop_id", null: false
-    t.string "title", null: false
-    t.text "content", null: false
-    t.datetime "start_time", null: false
+    t.string "title"
+    t.text "content"
+    t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

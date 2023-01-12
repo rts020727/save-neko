@@ -1,9 +1,9 @@
 <div class='container-fluid'>
-  <div class='row justify-content-center'>
+  <div class='row d-flex justify-content-center'>
 
-    <div class='col-md-3 text-center'>
+    <div class='col-md-3 text-center p-5 bg-white rounded-pill'>
       <h1 class='mb-4'>MY PAGE</h1>
-      <div class='mt-3 mb-3'><%= image_tag @user.get_image(300,300), class: 'rounded' %></div>
+      <div class='mt-3 mb-3'><%= image_tag current_user.get_image(200,200), class: 'rounded' %></div>
       <table class='table table-borderless'>
         <tr>
           <td>名前</td>
@@ -20,19 +20,30 @@
     </div>
 
     <div class="col-md-8 text-center">
-      <h1>ブックマークしたお店</h1>
-        <% @bookmark_shops.each do |shop| %>
-        <div>
-          <%= render "public/shops/shop", shop: shop %>
-        </div>
-        <% end %>
-      <h1 class="m-5">いいねした投稿</h1>
-        <% @favorite_photos.each do |photo| %>
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-6">
-            <%= render "public/photos/photo", photo: photo %>
+      <h1>BOOKMARK SHOPS</h1>
+      <!--ブックマークしたお店があれば表示する-->
+        <% if @bookmark_shops.present? %>
+          <% @bookmark_shops.each do |shop| %>
+          <div>
+            <%= render "public/shops/shop", shop: shop %>
           </div>
-        </div>
+          <% end %>
+        <% else %>
+          <h4 class="m-5">ブックマークしたお店はありません</h4>
+        <% end %>
+        
+      <h1 class="m-5">FAVORITE PHOTOS</h1>
+      <!--いいねした投稿があれば表示する-->
+        <% if @favorite_photos.present? %>
+          <% @favorite_photos.each do |photo| %>
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+              <%= render "public/photos/photo", photo: photo %>
+            </div>
+          </div>
+          <% end %>
+        <% else %>
+          <h4 class="m-5">いいねした写真はありません</h4>
         <% end %>
     </div>
   </div>

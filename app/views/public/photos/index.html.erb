@@ -3,7 +3,7 @@
 
     <% @photos.each do |photo| %>
       <div class="col-md-4">
-        <div class='card card-columns mb-4 shadow-sm'>
+        <div class='card card-columns mb-4'>
           <div class="bd-placeholder-img card-img-top">
             <%= image_tag photo.get_image, class: "img-fluid img" %>
           </div>
@@ -25,5 +25,6 @@
         </div>
       </div>
     <% end %>
+    
   </div>
 </div>

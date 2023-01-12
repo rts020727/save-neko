@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :shops, controllers: {
+ devise_for :shops, controllers: {
     registrations: 'owner/registrations',
     sessions: 'owner/sessions'
   }

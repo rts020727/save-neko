@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 text-center">
+      <h3 class="mb-5">一般ユーザー一覧</h3>
+      <table class="table">
+        <tr>
+          <th>ユーザーID</th>
+          <th>ユーザー名</th>
+          <th>ユーザーメールアドレス</th>
+          <th>登録状況</th>
+        </tr>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= link_to user.name, admin_user_path(user.id) %></td>
+          <td><%= user.email %></td>
+          <% if user.is_deleted == false %>
+            <td class="text-success">登録中</td>
+          <% else %>
+            <td class="text-danger">退会済み</td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

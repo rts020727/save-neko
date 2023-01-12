@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
 
   has_one_attached :image
+  
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
 
   def self.guest
     find_or_create_by!(name: 'guestuser', email: 'guest@example.com') do |user|

@@ -26,6 +26,25 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      user: "ユーザー"
+      shop: "店舗"
+    attributes:
+      user: 
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "次回から自動的にログイン"
+      shop: 
+        name: "店舗名"
+        name_kana: "店舗名（ふりがな）"
+        email: "メールアドレス"
+        password: "パスワード"
+        address: "住所"
+        phone_number: "電話番号"
+        opening: "営業日"
+        closed: "定休日"
 
   simple_calendar:
     previous: "<<"
@@ -197,11 +216,3 @@ ja:
       too_long: "は%{count}文字以下に設定して下さい。"
       invalid: "は有効でありません。"
       confirmation: "が内容とあっていません。"
-
-  activerecord:
-    attributes:
-      user:
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: 確認用パスワード
-        remember_me: 次回から自動的にログイン

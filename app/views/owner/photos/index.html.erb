@@ -2,7 +2,8 @@
   <div class="row d-flex justify-content-center" style='margin-top: 50px'>
 
     <div class="col-12 clearfix mb-3">
-      <div class="float-right"><%= link_to 'ねこの日常を新規投稿する', new_owner_photo_path, class: 'btn btn-sm btn-outline-secondary' %></div>
+      <h1 class="text-center">- MY PHOTOS -</h1>
+      <div class="float-right"><%= link_to '新規投稿する', new_owner_photo_path, class: 'btn btn-sm btn-secondary' %></div>
     </div>
 
     <% @photos.each do |photo| %>

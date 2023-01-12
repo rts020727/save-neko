@@ -1,10 +1,10 @@
 <div class='container-fluid'>
-  <h3 class="mb-5 mt-5 text-center">店舗情報</h3>
+  <h1 class="mb-5 mt-5 text-center">- MY SHOP -</h1>
   <div class='row justify-content-center'>
-    <div class="col-sm-3">
-      <%= image_tag @shop.get_shop_image(300,300) %>
+    <div class="col-md-3 pt-5 bg-white round-left">
+      <%= image_tag @shop.get_shop_image(300,300), class: "img-fluid w-100" %>
     </div>
-    <div class='col-sm-6'>
+    <div class='col-md-6 pt-5 bg-white round-right'>
       <div>
           <table class='table table-borderless'>
             <tr>

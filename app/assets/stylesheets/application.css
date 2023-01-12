@@ -14,24 +14,29 @@
  *= require_self
  */
 
-h1 {
-  font-family: 'Train One', cursive;
-}
-
 body {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   min-height: 100vh;
-  background-color: #c7e7cc;
   position: relative;
+  background-color: #eaf3ef;
+}
+
+h1 {
+  font-family: 'Montserrat';
+  font-size: 35px;
+}
+
+h1, h2, h3, h4 {
+  font-weight: bold;
 }
 
 header {
-  background-color: #f37053;
-
+  background-color: #468976;
+  color: #fff;
 }
 
 .nav-item, .navbar-brand {
-  font-family: 'Train One', cursive;
+  font-family: 'Montserrat';
   font-size: 20px;
   padding-right: 15px;
 }
@@ -41,7 +46,7 @@ main {
 }
 
 footer {
-  background-color: #627da1;
+  background-color: #468976;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -50,7 +55,6 @@ footer {
 
 .card {
   border-radius: 30px;
-  background-color: #faf3e5;
 }
 
 .card .img {
@@ -60,5 +64,5 @@ footer {
 }
 
 .shop-box {
-  background-color: #faf3e5;
+  background-color: white;
 }

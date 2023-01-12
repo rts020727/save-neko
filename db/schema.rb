@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 2023_01_08_044257) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.string "name_kana", null: false
-    t.string "postal_code", null: false
     t.string "address", null: false
     t.float "latitude"
     t.float "longitude"

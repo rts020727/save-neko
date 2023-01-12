@@ -10,7 +10,13 @@ class Shop < ApplicationRecord
   has_many :events, dependent: :destroy
   has_one_attached :shop_image
   
-  
+  validates :name, presence: true
+  validates :name_kana, presence: true
+  validates :email, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+  validates :opening, presence: true
+  validates :closed, presence: true
   
   
   def get_shop_image(width, height)

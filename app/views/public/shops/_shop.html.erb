@@ -1,9 +1,9 @@
-<div class='row position-relative justify-content-center shadow m-5'>
-  <div class="col-md-6 p-md-4 text-center shop-box">
+<div class='row position-relative justify-content-center shadow m-3'>
+  <div class="col-md-6 text-center shop-box">
     <h3 class="m-3"><%= shop.name %></h3>
     <%= image_tag shop.get_shop_image(500,500), class: "bd-placeholder-img w-75 rounded m-3" %>
   </div>
-  <div class="col-md-6 position-static p-4 pl-md-0 text-left shop-box">
+  <div class="col-md-6 position-static text-left shop-box">
     <div class='m-5'>
       <p>住所</p>
       <p class='mx-3'><%= shop.address %></p>

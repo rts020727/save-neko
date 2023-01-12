@@ -7,6 +7,7 @@ class Shop < ApplicationRecord
   has_many :cats, dependent: :destroy
   has_many :photos, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :events, dependent: :destroy
   has_one_attached :shop_image
   
   

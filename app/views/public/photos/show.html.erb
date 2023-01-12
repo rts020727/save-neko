@@ -10,7 +10,12 @@
         <div class="card-body m-2">
           <h4><%= @photo.title %></h4>
           <p>店舗名：<span class="h4"><%= link_to @photo.shop.name, shop_path(@photo.shop_id), class: "badge badge-light" %></span>
-            <span class=<%= "favorite-btn" + @photo.id.to_s %>><%= render "favorite-btn", photo: @photo %></span>
+            <!--ユーザーがサインインしていれば、いいねボタンを表示-->
+          <% if user_signed_in? %>
+            <span class=<%= "favorite-btn" + @photo.id.to_s %>>
+              <%= render "favorite-btn", photo: @photo %>
+            </span>
+          <% end %>
           </p>
           <p class="card-text text-truncate">
             <%= @photo.content %>
@@ -34,17 +39,19 @@
       <%= render "comment", photo: @photo %>
     </div>
   </div>
-
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-5">
-      <%= form_with model: [@photo, @comment], url: photo_comments_path(@photo), method: :post, local: false do |f| %>
-        <%= f.text_area :photo_comment, placeholder: "ぜひコメントしてください！", class: "form-control m-3" %>
-        <p class="text-right"><%= f.submit "送信する", class: "btn btn-info" %></p>
-      <% end %>
+    <!--ユーザーがサインインしていれば、コメント入力フォームを表示-->
+  <% if user_signed_in?  %>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-5">
+        <%= form_with model: [@photo, @comment], url: photo_comments_path(@photo), method: :post, local: false do |f| %>
+          <%= f.text_area :photo_comment, placeholder: "ぜひコメントしてください！", class: "form-control m-3" %>
+          <p class="text-right"><%= f.submit "送信する", class: "btn btn-info" %></p>
+      </div>
     </div>
-  </div>
-  <div class="col-12 clearfix">
-    <div class="float-right"><%= link_to "一覧へもどる", photos_path, class: "btn btn-sm btn-secondary" %></div>
-  </div>
+  <% end %>
+    <div class="col-12 clearfix">
+      <div class="float-right"><%= link_to "一覧へもどる", photos_path, class: "btn btn-sm btn-secondary" %></div>
+    </div>
+  <% end %>
 
 </div>

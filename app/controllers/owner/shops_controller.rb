@@ -32,6 +32,6 @@ class Owner::ShopsController < ApplicationController
   private
   
   def shop_params
-    params.require(:shop).permit(:name, :name_kana, :postal_code, :address, :phone_number, :opening, :closed, :shop_image)
+    params.require(:shop).permit(:name, :name_kana, :address, :phone_number, :opening, :closed, :shop_image)
   end
 end

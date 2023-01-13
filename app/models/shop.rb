@@ -35,4 +35,19 @@ class Shop < ApplicationRecord
   def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)
   end
+  
+  # 検索方法の分岐
+  def self.looks(search, keyword)
+    if search == "perfect_match"
+      @shop = Shop.where("name LIKE?", "#{keyword}")
+    elsif search == "forward_match"
+      @shop = Shop.where("name LIKE?", "#{keyword}%")
+    elsif search == "backward_match"
+      @shop = Shop.where("name LIKE?", "%#{keyword}")
+    elsif search == "partial_match"
+      @shop = Shop.where("name LIKE?", "%#{keyword}%")
+    else
+      @shop = Shop.all
+    end
+  end
 end

@@ -1,0 +1,16 @@
+<h1>SEARCH RESULT</h1>
+<table>
+  <% if @range == "Shop" %>
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><%= shop.name %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <% @photos.each do |photo| %>
+    <tr>
+      <td><%= photo.content %></td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>

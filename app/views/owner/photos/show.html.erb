@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row d-flex justify-content-center" style='margin-top: 50px'>
-    <div class="col-md-6">
-
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 mb-5">
+      <h1 class="mb-5 text-center">- PHOTO DETAIL -</h1>
       <div class="card mb-4 shadow-sm">
         <div class="bd-placeholder-img card-img-top">
           <%= image_tag @photo.get_image, class: "img-fluid img" %>
@@ -20,9 +20,20 @@
           </div>
         </div>
       </div>
-
+      
+      <h1 class="text-center mt-5">- COMMENTS -</h1>
+      <% if @photo.comments.present? %>
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-12 <%= "comment-index" + @photo.id.to_s %>">
+            <%= render "public/photos/comment", photo: @photo %>
+          </div>
+        </div>
+      <% else %>
+        <h4 class="text-center m-5">まだコメントはありません</h4>
+      <% end %>
+      
       <div class="col-12 clearfix">
-        <div class="float-right"><%= link_to '一覧へもどる', owner_photos_path, class: 'btn btn-sm btn-outline-secondary' %></div>
+        <div class="float-right"><%= link_to '一覧へもどる', owner_photos_path, class: "btn btn-info" %></div>
       </div>
 
     </div>

@@ -13,10 +13,12 @@ class Owner::PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @photo.shop_id = current_shop.id
     if @photo.save
+      flash[:notice] = "投稿が成功しました！"
       redirect_to owner_photo_path(@photo.id)
     else
       @photos = current_shop.photos
-      render :index
+      flash.now[:alert] = "投稿に失敗しました"
+      render :new
     end
   end
   
@@ -31,8 +33,10 @@ class Owner::PhotosController < ApplicationController
   def update
     @photo = Photo.find(params[:id])
     if @photo.update(photo_params)
+      flash[:notice] = "編集に成功しました！"
       redirect_to owner_photo_path(@photo.id)
     else
+      flash.now[:alert] = "編集に失敗しました"
       render :edit
     end
   end

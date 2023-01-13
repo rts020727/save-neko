@@ -1,9 +1,9 @@
-
-
 <div class="container-fluid">
+  <h1 class="mb-5 text-center">- EVENTS -</h1>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-4 p-5 m-5 border border-white">
-      <h3 class="text-center mb-5">イベント情報<br>新規登録</h3>
+    
+    <div class="col-md-3 m-5 p-5 border border-white">
+      <h3 class="text-center">新規登録</h3>
       <%= form_with model: @event, url: owner_events_path, method: :post do |f| %>
         <p>タイトル</p>
         <p><%= f.text_field :title, class: "form-control" %></p>
@@ -14,7 +14,7 @@
         <p class="text-right m-3"><%= f.submit "イベント投稿する", class: "btn btn-info" %></p>
       <% end %>
     </div>
-    <div class="col-md-6 bg-white">
+    <div class="col-md-7 bg-white">
       <%= month_calendar events: @events do |date, events| %>
         <%= date.day %>
 

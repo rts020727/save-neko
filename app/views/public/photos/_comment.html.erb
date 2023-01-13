@@ -7,13 +7,16 @@
       <div class="ml-3">
         <p class="mt-4">-<%= comment.user.name %>さんのコメント-</p>
         <p class="mx-2"><%= safe_join(comment.photo_comment.split("\n"), tag(:br)) %></p>
-        <% if comment.user == current_user %>
+        
+        <!--コメントしたユーザーまたは、投稿した店舗ユーザーであれば-->
+        <% if comment.user == current_user ||  photo.shop %>
           <p class="text-right">
             <%= link_to photo_comment_path(photo.id, comment.id), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
               削除する<i class="fas fa-trash-alt"></i>
             <% end %>
           </p>
         <% end %>
+        
       </div>
     </div>
 </div>

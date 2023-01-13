@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'shops/index'
+    get 'shops/edit'
+    get 'shops/show'
+  end
  devise_for :shops, controllers: {
     registrations: 'owner/registrations',
     sessions: 'owner/sessions'
@@ -43,7 +48,9 @@ Rails.application.routes.draw do
     get '/shops/:id/unsubscribe' => 'shops#unsubscribe', as: 'shops_unsubscribe'
     patch '/shops/:id/withdraw' => 'shops#withdraw', as: 'shops_withdraw'
     resources :cats
-    resources :photos
+    resources :photos do
+      resources :comment, only: [:destroy]
+    end
     resources :events
   end
 

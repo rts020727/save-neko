@@ -75,3 +75,7 @@ footer {
 .round-right {
   border-radius: 0 20px 20px 0;
 }
+
+.round-all {
+  border-radius: 20px;
+}

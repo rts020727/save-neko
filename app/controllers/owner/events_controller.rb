@@ -2,7 +2,7 @@ class Owner::EventsController < ApplicationController
   before_action :authenticate_shop!
   
   def index
-    @events = Event.all
+    @events = current_shop.events
     @event = Event.new
   end
   

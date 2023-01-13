@@ -8,8 +8,7 @@ class Public::CommentsController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:photo_id])
-    comment = @photo.comments.find_by(user_id: current_user.id)
-    comment.destroy
+    Comment.find(params[:id]).destroy
   end
 
   private

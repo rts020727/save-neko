@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'shops/index'
+    get 'shops/edit'
+    get 'shops/show'
+  end
  devise_for :shops, controllers: {
     registrations: 'owner/registrations',
     sessions: 'owner/sessions'

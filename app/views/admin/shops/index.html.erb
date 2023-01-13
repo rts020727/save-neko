@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-md-8 text-center">
-      <h3 class="mb-5">一般ユーザー一覧</h3>
+      <h3 class="mb-5">店舗一覧</h3>
       <table class="table">
         <tr>
-          <th>ユーザーID</th>
-          <th>ユーザー名</th>
+          <th>店舗ID</th>
+          <th>店舗名</th>
           <th>メールアドレス</th>
           <th>登録状況</th>
         </tr>
-        <% @users.each do |user| %>
+        <% @shops.each do |shop| %>
         <tr>
-          <td><%= user.id %></td>
-          <td><%= link_to user.name, admin_user_path(user.id) %></td>
-          <td><%= user.email %></td>
-          <% if user.is_deleted == false %>
+          <td><%= shop.id %></td>
+          <td><%= link_to shop.name, admin_shop_path(shop.id) %></td>
+          <td><%= shop.email %></td>
+          <% if shop.is_deleted == false %>
             <td class="text-success">登録中</td>
           <% else %>
             <td class="text-danger">退会済み</td>

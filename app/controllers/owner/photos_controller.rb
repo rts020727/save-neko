@@ -17,7 +17,7 @@ class Owner::PhotosController < ApplicationController
       redirect_to owner_photo_path(@photo.id)
     else
       @photos = current_shop.photos
-      flash[:alert] = "投稿に失敗しました"
+      flash.now[:alert] = "投稿に失敗しました"
       render :new
     end
   end
@@ -36,7 +36,7 @@ class Owner::PhotosController < ApplicationController
       flash[:notice] = "編集に成功しました！"
       redirect_to owner_photo_path(@photo.id)
     else
-      flash[:alert] = "編集に失敗しました"
+      flash.now[:alert] = "編集に失敗しました"
       render :edit
     end
   end

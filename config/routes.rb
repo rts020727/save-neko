@@ -36,9 +36,12 @@ Rails.application.routes.draw do
     end
     resources :shops, only: [:index, :show] do
       resource :bookmarks, only: [:create, :destroy]
+      resources :cats, only: [:index]
+      resources :events, only: [:index, :show]
     end
     get "search" => "searches#search"
     get "search_form" => "searches#search_form"
+    
   end
 
   # 店舗オーナー

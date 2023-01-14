@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'shops/index'
-    get 'shops/edit'
-    get 'shops/show'
-  end
- devise_for :shops, controllers: {
+  devise_for :shops, controllers: {
     registrations: 'owner/registrations',
     sessions: 'owner/sessions'
   }
@@ -19,10 +14,12 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   
+  # ゲスト
   devise_scope :user do
     post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
   end
-
+  
+  # 共通画面
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
   get 'signup' => 'public/homes#signup', as: 'signup'
@@ -40,6 +37,8 @@ Rails.application.routes.draw do
     resources :shops, only: [:index, :show] do
       resource :bookmarks, only: [:create, :destroy]
     end
+    get "search" => "searches#search"
+    get "search_form" => "searches#search_form"
   end
 
   # 店舗オーナー

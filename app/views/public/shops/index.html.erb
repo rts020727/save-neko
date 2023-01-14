@@ -1,8 +1,10 @@
 <div class='container'>
-  <h1 class='text-center'>店舗一覧</h1>
+  <h1 class='text-center'>- SHOPS -</h1>
   <% @shops.each do |shop| %>
-    <%= link_to shop_path(shop.id), class: 'text-decoration-none text-reset' do %>
-      <%= render 'shop', shop: shop %>
+    <%= link_to shop_path(shop.id), class: "text-reset text-decoration-none" do %>
+      <div class='row position-relative justify-content-center round-all bg-white mt-5 pt-4'>
+        <%= render 'shop', shop: shop %>
+      </div>
     <% end %>
   <% end %>
 </div>

@@ -4,7 +4,7 @@
   </div>
   <div class="card-body">
     <h4><%= photo.title %></h4>
-    <p>店舗名：<span class='h4'><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'btn btn-green mr-3' %></span>
+    <p><span><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'btn btn-green-w ml-1 mr-3' %></span>
 
       <!--ユーザーがサインインしていれば、いいねボタンを表示する-->
     <% if user_signed_in? %>

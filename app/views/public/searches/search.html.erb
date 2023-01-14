@@ -1,0 +1,34 @@
+<div class="container">
+  <% if @model == "shop" %>
+  <h1 class="text-center mb-5">SHOPS SEARCH FOR "<%= @keyword %>"</h1>
+  <div class="row d-flex justify-content-center">
+    <% if @records.present? %>
+      <div class="col-md-8">
+        <% @records.each do |shop| %>
+          <%= link_to shop_path(shop.id), class: 'text-decoration-none text-reset' do %>
+            <%= render 'public/shops/shop', shop: shop %>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <h3 class="text-center m-5">一致する店舗はありません</h3>
+    <% end %>
+  </div>
+      
+  <% elsif @model == "photo" %>
+  <h1 class="text-center mb-5">PHOTO SEARCH FOR "<%= @keyword %>"</h1>
+  <div class="row d-flex justify-content-center">
+    <% if @records.present? %>
+      <% @records.each do |photo| %>
+        <div class="col-md-4">
+        <%= link_to photo_path(photo.id), class: "text-decoration-none text-reset" do %>
+          <%= render "public/photos/photo", photo: photo %>
+        <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <h3 class="text-center m-5">一致する投稿はありません</h3>
+    <% end %>
+  <% end %>
+  </div>
+</div>

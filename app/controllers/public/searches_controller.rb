@@ -2,22 +2,18 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_user!
   
   def search
-    # 検索フォームから検索モデル:rangeの情報の受け取り
-    @range = params[:range]
+    @keyword = params[:keyword]
+    @model = params[:model]
+    @method = params[:method]
     
-    # 検索フォームから検索方法:search、検索ワード:keywordの受け取り
-    if @range == "Shop"
-      @shops = Shop.looks(params[:search], params[:keyword])
-      redirect_to search_result_path
+    if @model == "shop"
+      @records = Shop.search_for(@keyword, @method)
     else
-      @photos = Photo.looks(params[:search], params[:keyword])
-      redirect_to search_result_path
+      @records = Photo.search_for(@keyword, @method)
     end
   end
   
-  def search_result
-    @range = params[:range]
-    @shops = Shop.looks(params[:search], params[:keyword])
-    @photos = Photo.looks(params[:search], params[:keyword])
+  def search_form
   end
+
 end

@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:create, :destroy]
     end
     get "search" => "searches#search"
-    get "search_result" => "searches#search_result" 
+    get "search_form" => "searches#search_form"
   end
 
   # 店舗オーナー

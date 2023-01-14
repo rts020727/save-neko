@@ -23,17 +23,15 @@ class Photo < ApplicationRecord
   end
 
   # 検索方法の分岐
-  def self.looks(search, keyword)
-    if search == "perfect_match"
-      @photo = Photo.where("content LIKE?", "#{keyword}")
-    elsif search == "forward_match"
-      @photo = Photo.where("content LIKE?", "#{keyword}%")
-    elsif search == "backward_match"
-      @photo = Photo.where("content LIKE?", "%#{keyword}")
-    elsif search == "partial_match"
-      @photo = Photo.where("content LIKE?", "%#{keyword}%")
+  def self.search_for(keyword, method)
+    if method == "perfect"
+      Photo.where("content LIKE?", "#{keyword}")
+    elsif method == "forward"
+      Photo.where("content LIKE?", "#{keyword}%")
+    elsif method == "backward"
+      Photo.where("content LIKE?", "%#{keyword}")
     else
-      @photo = Photo.all
+      Photo.where("content LIKE?", "%#{keyword}%")
     end
   end
 end

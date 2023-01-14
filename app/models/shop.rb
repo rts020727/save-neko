@@ -37,17 +37,15 @@ class Shop < ApplicationRecord
   end
   
   # 検索方法の分岐
-  def self.looks(search, keyword)
-    if search == "perfect_match"
-      @shop = Shop.where("name LIKE?", "#{keyword}")
-    elsif search == "forward_match"
-      @shop = Shop.where("name LIKE?", "#{keyword}%")
-    elsif search == "backward_match"
-      @shop = Shop.where("name LIKE?", "%#{keyword}")
-    elsif search == "partial_match"
-      @shop = Shop.where("name LIKE?", "%#{keyword}%")
+  def self.search_for(keyword, method)
+    if method == "perfect"
+      Shop.where("name LIKE?", "#{keyword}")
+    elsif method == "forward"
+      Shop.where("name LIKE?", "#{keyword}%")
+    elsif method == "backward"
+      Shop.where("name LIKE?", "%#{keyword}")
     else
-      @shop = Shop.all
+      Shop.where("name LIKE?", "%#{keyword}%")
     end
   end
 end

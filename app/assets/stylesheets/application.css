@@ -79,3 +79,17 @@ footer {
 .round-all {
   border-radius: 20px;
 }
+
+.btn-green {
+  background-color: #468976;
+  color: #fff;
+  border: 2px solid #468976;
+  border-radius: 20px;
+}
+
+.btn-green-w {
+  background-color: #fff;
+  color: #468976;
+  border: 2px solid #468976;
+  border-radius: 20px;
+}

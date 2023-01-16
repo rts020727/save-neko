@@ -1,9 +1,12 @@
 class Public::CommentsController < ApplicationController
   def create
     @photo = Photo.find(params[:photo_id])
-    comment = current_user.comments.new(comment_params)
-    comment.photo_id = @photo.id
-    comment.save
+    @comment = current_user.comments.new(comment_params)
+    @comment.photo_id = @photo.id
+    # コメントがセーブできなければ、error.js.erbを呼び出す
+    unless @comment.save
+      render 'error'
+    end
   end
 
   def destroy

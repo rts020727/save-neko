@@ -14,6 +14,9 @@
   </div>
     <!--ユーザーがサインインしていれば、コメント入力フォームを表示-->
   <% if user_signed_in?  %>
+  <div id="comments_error">
+    <%= render "layouts/errors", model: @comment %>
+  </div>
     <div class="row d-flex justify-content-center">
       <div class="col-md-5">
         <%= form_with model: [@photo, @comment], url: photo_comments_path(@photo), method: :post, local: false do |f| %>

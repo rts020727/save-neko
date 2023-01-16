@@ -1,0 +1,14 @@
+<% if model.errors.any? %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-12 bg-warning text-danger p-3">
+      <%= model.errors.count %>件エラーが発生しました
+      <ul>
+        <% model.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<% end %>

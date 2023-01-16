@@ -2,6 +2,9 @@
   <div class='row justify-content-center'>
     <div class='col-md-6'>
       <h1 class='mb-3 text-center'>- CAT NEW -</h1>
+      
+      <%= render "layouts/errors", model: @cat %>
+      
       <p class="text-center">在籍しているねこちゃんを登録してください！</p>
       <%= form_with model: @cat, url: owner_cats_path, method: :post do |f| %>
       <div>

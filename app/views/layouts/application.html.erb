@@ -19,15 +19,17 @@
     </header>
     <main>
       <% if alert.present? %>
-      <div class="container">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-12 bg-warning text-danger p-3 m-2">
-            <%= alert %>
-          </div>
-        </div>
+      <div class="alert alert-danger">
+        <%= alert %>
       </div>
       <% end %>
-            
+      
+      <% if notice.present? %>
+        <div class="alert alert-info">
+          <%= notice %>
+        </div>
+      <% end %>
+      
       <%= yield %>
     </main>
     <footer>

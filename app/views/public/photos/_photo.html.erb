@@ -4,21 +4,25 @@
   </div>
   <div class="card-body">
     <h4><%= photo.title %></h4>
-    <p>店舗名：<span class='h4'><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'badge badge-light mr-3' %></span>
+    <p><span><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'btn btn-green-w ml-1 mr-3' %></span>
+
       <!--ユーザーがサインインしていれば、いいねボタンを表示する-->
     <% if user_signed_in? %>
       <span class=<%= "favorite-btn" + photo.id.to_s %>>
         <%= render "public/photos/favorite-btn", photo: photo %>
       </span>
     <% end %>
-    
+    <p><small>投稿日：<%= photo.created_at.strftime("%Y年%m月%d日") %></small></p>
     <p class="card-text text-truncate">
       <%= photo.content %>
     </p>
-    <div class="d-flex justify-content-between align-items-center">
-      <small class=<%= "comment-count" + photo.id.to_s %>>コメント数：<%= photo.comments.count %></small>
+    <div>
+      <small class="<%= "comment-count" + photo.id.to_s %> mr-3">コメント数：<%= photo.comments.count %></small>
       <small class=<%= "favorite-btn-count" + photo.id.to_s %>>いいね数：<%= photo.favorites.count %></small>
-      <%= link_to '詳細', photo_path(photo.id), class: 'btn btn-sm btn-info' %>
+      <!--表示しているページが一覧表示であれば詳細リンクを表示する-->
+      <% if current_page?(photos_path) || current_page?(user_path(current_user)) || current_page?(search_path) %>
+        <%= link_to "詳細", photo_path(photo.id), class: "ml-3 btn btn-sm btn-info" %>
+      <% end %>
     </div>
   </div>
 </div>

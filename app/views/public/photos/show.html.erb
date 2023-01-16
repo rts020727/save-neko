@@ -1,36 +1,9 @@
 <div class="container">
   <h1 class="text-center">- PHOTO DETAIL -</h1>
 
-  <div class="row d-flex justify-content-center" style="margin-top: 50px">
-    <div class="col-md-6">
-      <div class="card mb-4 shadow-sm">
-        <div class="bd-placeholder-img card-img-top">
-          <%= image_tag @photo.get_image, class: "img-fluid img" %>
-        </div>
-        <div class="card-body m-2">
-          <h4><%= @photo.title %></h4>
-          <p>店舗名：<span class="h4"><%= link_to @photo.shop.name, shop_path(@photo.shop_id), class: "badge badge-light" %></span>
-            <!--ユーザーがサインインしていれば、いいねボタンを表示-->
-          <% if user_signed_in? %>
-            <span class=<%= "favorite-btn" + @photo.id.to_s %>>
-              <%= render "favorite-btn", photo: @photo %>
-            </span>
-          <% end %>
-          </p>
-          <p class="card-text text-truncate">
-            <%= @photo.content %>
-          </p>
-          <small>
-            <p class="text-center">
-              <span class=<%= "comment-count" + @photo.id.to_s %>>コメント数：<%= @photo.comments.count %></span>
-              <span class=<%= "favorite-btn-count" + @photo.id.to_s %>>いいね数：<%= @photo.favorites.count %></span>
-              <span class="ml-5">
-                投稿日：<%= @photo.created_at.strftime("%Y年%m月%d日") %>
-              </span>
-            </p>
-          </small>
-        </div>
-      </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-4">
+      <%= render "photo", photo: @photo %>
     </div>
   </div>
 

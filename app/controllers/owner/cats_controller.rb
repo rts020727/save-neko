@@ -13,10 +13,11 @@ class Owner::CatsController < ApplicationController
     @cat = Cat.new(cat_params)
     @cat.shop_id = current_shop.id
     if @cat.save
+      flash[:notice] = "新規登録に成功しました！"
       redirect_to owner_cat_path(@cat.id)
     else
-      @cats = current_shop.cats
-      render :index
+      flash.now[:alert] = "新規登録に失敗しました"
+      render :new
     end
   end
 
@@ -31,8 +32,10 @@ class Owner::CatsController < ApplicationController
   def update
     @cat = Cat.find(params[:id])
     if @cat.update(cat_params)
+      flash[:notice] = "編集の保存に成功しました！"
       redirect_to owner_cat_path(@cat.id)
     else
+      flash.now[:alert] = "編集の保存に失敗しました"
       render :edit
     end
   end

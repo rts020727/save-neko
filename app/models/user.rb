@@ -9,9 +9,10 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
 
   has_one_attached :image
-  
-  validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
+
+  validates :name, presence: true, length: { maximum: 20 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 
   def self.guest
     find_or_create_by!(name: 'guestuser', email: 'guest@example.com') do |user|

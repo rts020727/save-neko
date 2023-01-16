@@ -10,9 +10,10 @@ class Shop < ApplicationRecord
   has_many :events, dependent: :destroy
   has_one_attached :shop_image
   
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
   validates :name_kana, presence: true
-  validates :email, presence: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :address, presence: true
   validates :phone_number, presence: true
   validates :opening, presence: true

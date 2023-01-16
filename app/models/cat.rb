@@ -1,6 +1,11 @@
 class Cat < ApplicationRecord
   belongs_to :shop
   has_one_attached :cat_image
+  
+  validates :name, presence: true
+  validates :gender, presence: true
+  validates :feature, presence: true
+  validates :introduction, presence: true
 
   def get_cat_image
     if cat_image.attached?

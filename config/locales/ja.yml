@@ -29,14 +29,21 @@ ja:
     models:
       user: "ユーザー"
       shop: "店舗"
+      admin: "管理者"
+      photo: "写真投稿"
+      cat: "在籍ねこ"
+      event: "イベント"
+      comment: "コメント"
+      favorite: "いいね"
+      bookmark: "ブックマーク"
     attributes:
-      user: 
+      user:
         name: "名前"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
-      shop: 
+      shop:
         name: "店舗名"
         name_kana: "店舗名（ふりがな）"
         email: "メールアドレス"
@@ -45,6 +52,24 @@ ja:
         phone_number: "電話番号"
         opening: "営業日"
         closed: "定休日"
+      admin:
+        email: "メールアドレス"
+        password: "パスワード"
+      photo:
+        title: "タイトル"
+        content: "内容"
+        image: "画像"
+      cat:
+        name: "名前"
+        gender: "性別"
+        feature: "特徴"
+        introduction: "紹介文"
+      event:
+        title: "タイトル"
+        content: "内容"
+        start_time: "日付"
+      comment:
+        photo_comment: "コメント"
 
   simple_calendar:
     previous: "<<"

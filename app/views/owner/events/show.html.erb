@@ -19,6 +19,7 @@
     </div>
     <div class="col-md-12 text-center m-5">
       <%= link_to "編集する", edit_owner_event_path, class: "btn btn-secondary mr-5" %>
+      <%= link_to "削除する", owner_event_path(@event), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger mr-5 ml-5" %>
       <%= link_to "イベント一覧へもどる", owner_events_path, class: "btn btn-info ml-5" %>
     </div>
   </div>

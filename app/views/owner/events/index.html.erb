@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h1 class="mb-5 text-center">- EVENTS -</h1>
+  <%= render "layouts/errors", model: @event %>
   <div class="row d-flex justify-content-center">
-    
     <div class="col-md-3 m-5 p-5 border border-white">
       <h3 class="text-center">新規登録</h3>
       <%= form_with model: @event, url: owner_events_path, method: :post do |f| %>

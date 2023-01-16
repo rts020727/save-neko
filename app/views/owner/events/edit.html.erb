@@ -1,8 +1,10 @@
 <div class="container">
   <h1 class="mb-5 text-center">- EVENT DETAIL -</h1>
+  <%= render "layouts/errors", model: @event %>
+  <%= form_with model: @event, url: owner_event_path(@event), method: :patch do |f| %>
   <div class="row d-flex justify-content-center">
     <div class="col-md-8 bg-white p-5 round-all">
-      <%= form_with model: @event, url: owner_event_path(@event), method: :patch do |f| %>
+      
       <table class="table table-borderless">
         <tr>
           <td class="text-right">イベント名　：</td>
@@ -18,10 +20,10 @@
         </tr>
       </table>
     </div>
-    <div class="col-md-12 text-center m-5">
-      <%= f.submit "編集を保存する", class: "btn btn-secondary mr-5" %>
-      <%= link_to "イベント一覧へもどる", owner_events_path, class: "btn btn-info ml-5" %>
-    </div>
-    <% end %>
+      <div class="col-md-12 text-center m-5">
+        <%= f.submit "編集を保存する", class: "btn btn-secondary mr-5" %>
+        <%= link_to "イベント一覧へもどる", owner_events_path, class: "btn btn-info ml-5" %>
+      </div>
   </div>
+  <% end %>
 </div>

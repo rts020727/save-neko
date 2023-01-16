@@ -1,10 +1,12 @@
-<div class='container-fluid'>
+<div class='container'>
   <h1 class="mb-5 mt-5 text-center">- MY SHOP -</h1>
-  <div class='row justify-content-center'>
-    <div class="col-md-3 pt-5 bg-white round-left">
-      <%= image_tag @shop.get_shop_image(300,300), class: "img-fluid w-100" %>
+  <div class='row justify-content-center align-items-center round-all bg-white mt-5 pt-4'>
+    <div class="col-md-6 p-m-4 text-center">
+      <div>
+        <%= image_tag @shop.get_shop_image(500,500), class: "bd-placeholder-img w-75 rounded m-3" %>
+      </div>
     </div>
-    <div class='col-md-6 pt-5 bg-white round-right'>
+    <div class='col-md-6 p-4 pl-md-0 text-left'>
       <div>
           <table class='table table-borderless'>
             <tr>

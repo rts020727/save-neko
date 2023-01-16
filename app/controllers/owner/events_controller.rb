@@ -9,8 +9,14 @@ class Owner::EventsController < ApplicationController
   def create
     event = Event.new(event_params)
     event.shop_id = current_shop.id
-    event.save
-    redirect_to owner_events_path
+    if event.save
+      flash[:notice] = "新規登録に成功しました！"
+      redirect_to owner_events_path
+    else
+      @events = current_shop.events
+      flash.now[:alert] = "新規登録に失敗しました"
+      render :index
+    end
   end
   
   def show
@@ -24,8 +30,13 @@ class Owner::EventsController < ApplicationController
   def update
     event = Event.find(params[:id])
     event.shop_id = current_shop.id
-    event.update(event_params)
-    redirect_to owner_event_path(event.id)
+    if event.update(event_params)
+      flash[:notice] = "編集の保存に成功しました！"
+      redirect_to owner_event_path(event.id)
+    else
+      flash.now[:alert] = "編集の保存に失敗しました"
+      render :edit
+    end
   end
   
   def destroy

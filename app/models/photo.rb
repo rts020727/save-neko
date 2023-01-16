@@ -6,8 +6,8 @@ class Photo < ApplicationRecord
 
   has_one_attached :image
 
-  validates :title, presence: true
-  validates :content, presence: true
+  validates :title, presence: true, length: { maximum: 20 }
+  validates :content, presence: true, length: { maximum: 200 }
   validates :image, presence: true
 
   def get_image

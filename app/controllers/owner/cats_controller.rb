@@ -42,6 +42,7 @@ class Owner::CatsController < ApplicationController
   
   def destroy
     @cat = Cat.find(params[:id])
+    flash[:notice] = "卒業に成功しました！"
     @cat.destroy
     redirect_to owner_cats_path
   end

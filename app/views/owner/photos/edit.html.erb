@@ -2,6 +2,7 @@
   <div class='row justify-content-center'>
     <div class='col-md-8'>
       <h1 class='mb-5 text-center'>- PHOTO EDIT -</h1>
+      <%= render "layouts/errors", model: @photo %>
       <%= form_with model: @photo, url: owner_photo_path(@photo.id), method: :patch do |f| %>
       <div>
         <table class='table text-center table-borderless'>
@@ -18,10 +19,10 @@
             <td><%= f.text_area :content, class: 'form-control' %></td>
           </tr>
         </table>
-        <% end %>
-        <p class="text-center"><%= link_to "編集を保存する", owner_photo_path(@photo.id), class: "btn btn-secondary" %></p>
+        <p class="text-center"><%= f.submit "編集を保存する", class: "btn btn-secondary" %></p>
         <p class="text-right"><%= link_to '一覧へもどる', owner_photos_path, class: 'btn btn-info' %></p>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

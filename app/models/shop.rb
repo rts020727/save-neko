@@ -10,6 +10,10 @@ class Shop < ApplicationRecord
   has_many :events, dependent: :destroy
   has_one_attached :shop_image
   
+  # :addressを登録した際にgeocoderが緯度、軽度のカラムにも自動的に値を入れる
+  geocoded_by :address
+  after_validation :geocode
+  
   validates :name, presence: true, length: { maximum: 20 }
   validates :name_kana, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

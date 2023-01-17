@@ -29,6 +29,14 @@ class Owner::ShopsController < ApplicationController
     redirect_to root_path
   end
   
+  def current_position
+    # 現在地を返す
+  end
+  
+  def address
+    [street, city, state, country].compact.join(', ')
+  end
+  
   private
   
   def shop_params

@@ -22,7 +22,7 @@
               <td><%= @shop.email %></td>
             </tr>
             <tr>
-              <td>住所</td>
+              <td id="address">住所</td>
               <td><%= @shop.address %></td>
             </tr>
             <tr>
@@ -45,4 +45,21 @@
       </div>
 　　</div>
   </div>
+
+
+<%= javascript_pack_tag "map" %>
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"  
+    async defer>
+</script>
+
+<style type="text/css">
+  #map { height: 400px;
+         width: 70%;}
+</style>
+
+<div id="map"></div>
+...
+
 </div>

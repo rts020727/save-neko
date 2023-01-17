@@ -4,7 +4,7 @@ class Public::ShopsController < ApplicationController
   end
 
   def show
-    @shop = Shop.find(params[:id])
+    @shop = Shop.find(params[:shop_id])
     @cats = @shop.cats.page(params[:page]).per(3).order('updated_at DESC')
     @events = @shop.events
   end

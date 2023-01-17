@@ -5,8 +5,38 @@
   <div class="row">
     <div class="col-md-12">
       <h1 class="text-center m-5">- CATS -</h1>
-      <%= link_to "在籍ねこちゃんの一覧を表示する", shop_cats_path(@shop), class: "btn btn-green-w" %>
-      <h1 class="text-center m-5">- EVENTS -</h1>
+    </div>
+
+    <div class="row justify-content-center">
+    <% if @cats.present? %>
+      <% @cats.each do |cat| %>
+        <div class="col-md-3">
+          <%= render "public/cats/cat", cat: cat %>
+        </div>
+      <% end %>
+      <div class="col-md-12">
+        <p class="text-right m-4"><%= link_to "在籍ねこちゃんの一覧を表示する", shop_cats_path(@shop), class: "btn btn-green" %></p>
+      </div>
+    <% else %>
+      <h3 class="text-center">
+        在籍しているねこちゃんの登録はありません。
+      </h3>
+    <% end %>
+
+      <div class="col-md-12">
+        <h1 class="text-center m-5">- EVENTS -</h1>
+      </div>
+
+      <div class="col-md-7 bg-white justify-content-center">
+      <%= month_calendar events: @events do |date, events| %>
+        <%= date.day %>
+        <% events.each do |event| %>
+          <div>
+            <%= link_to event.title, shop_event_path(@shop, event.id) %>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>

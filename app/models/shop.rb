@@ -9,6 +9,9 @@ class Shop < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :events, dependent: :destroy
   has_one_attached :shop_image
+  
+  geocoded_by :address
+  after_validation :geocode
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :name_kana, presence: true

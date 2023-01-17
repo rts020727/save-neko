@@ -13,12 +13,12 @@ Rails.application.routes.draw do
     registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
-  
+
   # ゲスト
   devise_scope :user do
     post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
   end
-  
+
   # 共通画面
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     end
     get "search" => "searches#search"
     get "search_form" => "searches#search_form"
-    
+
   end
 
   # 店舗オーナー

@@ -20,7 +20,7 @@
 
         <% events.each do |event| %>
           <div>
-            <%= link_to event.title, owner_event_path(event.id) %>
+            <%= link_to event.title, owner_event_path(@shop, event.id) %>
           </div>
         <% end %>
       <% end %>

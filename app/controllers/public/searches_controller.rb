@@ -14,6 +14,7 @@ class Public::SearchesController < ApplicationController
   end
   
   def search_form
+    @shops = Shop.all
   end
 
 end

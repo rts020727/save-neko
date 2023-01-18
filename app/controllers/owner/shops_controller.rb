@@ -1,8 +1,6 @@
 class Owner::ShopsController < ApplicationController
   before_action :authenticate_shop!
   
-  def index
-  end
 
   def show
     @shop = Shop.find(params[:id])

@@ -62,7 +62,8 @@
         // 交通機関のレイヤーを表示
         const transitLayer = new google.maps.TransitLayer();
         transitLayer.setMap(map);
-    
+        
+        // ピンに表示する内容
         const contentString =
           '<%= @shop.name %><br>' +
           '<%= @shop.address %>';

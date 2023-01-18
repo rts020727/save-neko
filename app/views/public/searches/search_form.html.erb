@@ -8,93 +8,95 @@
     </div>
     <div class="col-md-8">
       <h4 class="text-center">- マップ検索 -</h4>
-      <input id="address" type="textbox" value="">
-<input type="button" value="地図を検索" onclick="codeAddress()">
-<div id="display"></div>
+      <table class="table table-borderless">
+        <tr class="d-flex justify-content-center align-items-center">
+          <td><input id="address" type="textbox" value="", class="form-control"></td>
+          <td><input type="button" value="地図を検索" onclick="codeAddress()", class="btn btn-green"></td>
+        </tr>
+      </table>
 
-<div id='map'></div>
+      <div id="display"></div>
 
-<style>
-    #map {
-        height: 400px;
-        width: 400px;
-    }
-</style>
+      <div id='map' class="mx-auto"></div>
 
-<script>
-  let map
+      <style>
+          #map {
+              height: 400px;
+              width: 100;
+          }
+      </style>
 
-  const display = document.getElementById('display')
+      <script>
+        let map
 
-  // mapの表示関数
-  function initMap() {
-    geocoder = new google.maps.Geocoder()
+        const display = document.getElementById('display')
 
-      // mapの初期位置を東京駅に指定, 縮尺を定義
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-          lat: 35.6809591,
-          lng: 139.7673068
-        },
-        zoom: 12,
-      });
+        // mapの表示関数
+        function initMap() {
+          geocoder = new google.maps.Geocoder()
 
-      // mapsテーブルにあるそれぞれのレコードをmap上に表示
-      <% @shops.each do |shop| %>
-        (function(){
-        var contentString = 
-          '<%= shop.name %><br>' +
-          '<%= shop.address %>';
+            // mapの初期位置を東京駅に指定, 縮尺を定義
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {
+                lat: 35.6809591,
+                lng: 139.7673068
+              },
+              zoom: 12,
+            });
 
-        // マーカーを立てる
-        var marker = new google.maps.Marker({
-          position:{lat: <%= shop.latitude %>, lng: <%= shop.longitude %>},
-          map: map,
-          title: contentString
-        });
+            // mapsテーブルにあるそれぞれのレコードをmap上に表示
+            <% @shops.each do |shop| %>
+              (function(){
+              // ピンに表示する内容
+              const contentString =
+                '<%= link_to shop.name, shop_path(shop.id) %><br>' +
+                '<%= shop.address %>';
 
-        // 情報ウィンドウ(吹き出し)の定義
-        // 投稿の詳細ページへのリンクも
-        var infowindow = new google.maps.InfoWindow({
-        position: {lat: <%= shop.latitude %>, lng: <%= shop.longitude %>},
-        content: contentString
-        });
+              // マーカーを立てる
+              const marker = new google.maps.Marker({
+                position:{lat: <%= shop.latitude %>, lng: <%= shop.longitude %>},
+                map: map,
+                title: contentString
+              });
 
-        // クリックしたときに情報ウィンドウを表示
-        marker.addListener('mouseover', function() {
-        infowindow.open(map, marker);
-        });
+              // ピンを挿して表示する
+              const infowindow = new google.maps.InfoWindow({
+              position: {lat: <%= shop.latitude %>, lng: <%= shop.longitude %>},
+              content: contentString
+              });
 
-        })();
-      <% end %>
-  }
+              // マウスオーバーしたときに情報ウィンドウを表示
+              marker.addListener('mouseover', function() {
+              infowindow.open(map, marker);
+              });
+            })();
+            <% end %>
+        }
 
-  let geocoder
+        let geocoder
 
-  // 地図検索関数
-  function codeAddress() {
-    let inputAddress = document.getElementById('address').value;
+        // 地図検索関数
+        function codeAddress() {
+          let inputAddress = document.getElementById('address').value;
 
-    geocoder.geocode({
-      'address': inputAddress
-    }, function (results, status) {
-      if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-          
-      display.textContent = "検索結果：" + results[ 0 ].geometry.location
-      } else {
-        alert('該当する結果がありませんでした：' + status);
-      }
-    });
-  }
-</script>
+          geocoder.geocode({
+            'address': inputAddress
+          }, function (results, status) {
+            if (status == 'OK') {
+              map.setCenter(results[0].geometry.location);
 
-<script
-  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"
-  async defer>
-</script>
+            display.textContent = "検索結果：" + results[ 0 ].geometry.location
+            } else {
+              alert('該当する結果がありませんでした：' + status);
+            }
+          });
+        }
+      </script>
 
-
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"
+        async defer>
+      </script>
     </div>
   </div>
 </div>

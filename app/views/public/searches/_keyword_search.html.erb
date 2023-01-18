@@ -1,13 +1,21 @@
 <div>
   <%= form_with url: search_path, method: :get do |f| %>
     <table class="table table-borderless">
-      <tr>
-        <td class="w-75"><%= f.text_field :keyword, class: "form-control" %></td>
+      <tr class="d-flex justify-content-center align-items-center">
+        <td class="w-75">
+          <%= f.text_field :keyword, class: "form-control" %>
+        </td>
         <!--検索するモデルを選択-->
-        <td><%= f.select :model, options_for_select({ "Shop" => "shop", "Photo" => "photo" }) %></td>
+        <td>
+          <%= f.select :model, options_for_select({ "Shop" => "shop", "Photo" => "photo" }), {}, { class: "btn btn-green p-1" } %>
+        </td>
         <!--検索する方法を選択-->
-        <td><%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %></td>
-        <td><%= f.submit "検索", class: "btn btn-secondary" %></td>
+        <td>
+          <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }), {}, { class: "btn btn-green p-1" } %>
+        </td>
+        <td>
+          <%= f.submit "検索", class: "btn btn-green" %>
+        </td>
       </tr>
     </table>
   <% end %>

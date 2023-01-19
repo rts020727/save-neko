@@ -48,6 +48,14 @@ header {
 .nav-item, .navbar-brand {
   font-family: 'Montserrat';
   font-size: 20px;
+  padding-right: 15px;
+}
+
+footer {
+  background-color: #468976;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding-top: 35px;
 }
 
@@ -61,15 +69,6 @@ header {
   display: none;
   position: absolute;
   margin-left: -170px;
-}
-
-
-footer {
-  background-color: #468976;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding-top: 15px;
 }
 
 .card {

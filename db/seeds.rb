@@ -20,7 +20,7 @@ users = User.create!(
   ]
 )
 
-Shop.create!(
+shops = Shop.create!(
   [
     {email: 'yurayura@test.com', name: 'ゆらゆら', password: 'ownerpassword', address: '東京都中央区日本橋人形町２−７−２', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop3.jpg"), filename:"shop3.jpg") },
     {email: 'kimitoneko@test.com', name: '君と猫 秋葉店', password: 'ownerpassword', address: '東京都千代田区外神田４−４−３', phone_number: '000-0156-2131', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop4.jpg"), filename:"shop4.jpg") },
@@ -37,14 +37,41 @@ Shop.create!(
     {email: 'catclubcherry@test.com', name: 'Cat club cherry', password: 'ownerpassword', address: '大阪府高槻市北園町１９−１−６', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop14.jpg"), filename:"shop14.jpg") },
     {email: 'nekodazo@test.com', name: '猫Cafe 猫だ蔵', password: 'ownerpassword', address: '京都府中京区壬生土居ノ内町４−３', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop15.jpg"), filename:"shop15.jpg") },
     {email: 'moccha@test.com', name: 'MOCCHA 京都河原町店', password: 'ownerpassword', address: '京都府京都市中京区三条下ル大黒町５８', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop16.jpg"), filename:"shop16.jpg") },
-    {email: 'yumito@test.com', name: 'ゆうめいと', password: 'ownerpassword', address: '京都府京都市左京区一乗寺堂ノ前２３−２', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop17.jpg"), filename:"shop1.jpg") },
-　　
+    {email: 'yumito@test.com', name: 'ゆうめいと', password: 'ownerpassword', address: '京都府京都市左京区一乗寺堂ノ前２３−２', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop17.jpg"), filename:"shop1.jpg") }
   ]
 )
 
-Photo.create!(
-  [
-    {email: 'yumito@test.com', name: 'ゆうめいと', password: 'ownerpassword', address: '京都府京都市左京区一乗寺堂ノ前２３−２', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop17.jpg"), filename:"shop1.jpg") },
-    
-  ]
-)
+shops.each do |shop|
+  12.times do |n|
+    shop.cats.create!(
+      shop_id: shop.id,
+      name: Faker::Creature::Cat.name,
+      gender: rand(0..1),
+      feature: n,
+      introduction: "とってもいい子です。",
+      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/cat#{n}.jpg"), filename:"cat#{n}.jpg") 
+    )
+  end
+end
+
+shops.each do |shop|
+  4.times do |n|
+    randam_number = rand(1..14)
+    shop.photos.create!(
+      shop_id: shop.id,
+      title: "かわいい",
+      content: "元気いっぱいでとってもかわいいです。",
+      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo#{randam_number}.jpg"), filename:"photo#{randam_number}.jpg") 
+    )
+  end
+end
+
+
+# Cat.create!(
+#   shop_id: shops[0].id,
+#   name: 'aaa',
+#   gender: 0,
+#   feature: 0,
+#   introduction: '説明',
+#   image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/cat0.jpg"), filename:"cat0.jpg") 
+# )

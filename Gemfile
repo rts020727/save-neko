@@ -75,3 +75,7 @@ gem 'kaminari','~> 1.2.1'
 gem 'geocoder'
 
 gem 'pry-byebug', group: :development
+
+gem 'faker'
+
+gem 'gimei'

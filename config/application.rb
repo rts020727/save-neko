@@ -12,6 +12,8 @@ module SaveNeko
     config.load_defaults 6.1
     
     config.i18n.default_locale = :ja
+    
+    Faker::Config.locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
     #

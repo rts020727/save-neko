@@ -14,7 +14,6 @@ class Shop < ApplicationRecord
   after_validation :geocode
 
   validates :name, presence: true, length: { maximum: 20 }
-  validates :name_kana, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :address, presence: true
@@ -24,7 +23,7 @@ class Shop < ApplicationRecord
 
 
   def get_image(width, height)
-    unless shop_image.attached?
+    unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end

@@ -14,6 +14,15 @@
  *= require_tree .
  *= require_self
  */
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 50px 0 100px;
+}
 
 body {
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -39,12 +48,21 @@ header {
 .nav-item, .navbar-brand {
   font-family: 'Montserrat';
   font-size: 20px;
-  padding-right: 15px;
+  padding-top: 35px;
 }
 
-main {
-  padding: 50px 0 100px;
+.slideshow {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
 }
+
+.slide-img {
+  display: none;
+  position: absolute;
+  margin-left: -170px;
+}
+
 
 footer {
   background-color: #468976;

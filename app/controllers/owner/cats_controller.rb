@@ -1,14 +1,14 @@
 class Owner::CatsController < ApplicationController
   before_action :authenticate_shop!
-  
+
   def new
     @cat = Cat.new
   end
-  
+
   def index
     @cats = current_shop.cats
   end
-  
+
   def create
     @cat = Cat.new(cat_params)
     @cat.shop_id = current_shop.id
@@ -28,7 +28,7 @@ class Owner::CatsController < ApplicationController
   def edit
     @cat = Cat.find(params[:id])
   end
-  
+
   def update
     @cat = Cat.find(params[:id])
     if @cat.update(cat_params)
@@ -39,20 +39,20 @@ class Owner::CatsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @cat = Cat.find(params[:id])
     flash[:notice] = "卒業に成功しました！"
     @cat.destroy
     redirect_to owner_cats_path
   end
-  
+
   private
-  
+
   def cat_params
-    params.require(:cat).permit(:name, :gender, :feature, :introduction, :cat_image)
+    params.require(:cat).permit(:name, :gender, :feature, :introduction, :image)
   end
-  
+
   def redirect_root
     redirect_to root_path unless shop_signed_in?
   end

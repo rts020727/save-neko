@@ -1,20 +1,26 @@
-<div class="container-fluid">
+<div class="container-fluid m-0 p-0" >
   <div class="row">
-    
-    <div class="col-md-5 d-flex justify-content-center text-align-center">
-      <div>
-        <h1 class="mt-5 ml-5"><strong>SAVE</strong></h1>
-        <h1 class="mb-5 ml-5"><strong>neko</strong></h1>
-        <h5 class="mt-5 mb-3 ml-5">あなたも、保護猫カフェに</h5>
-        <h5 class="mb-5 ml-5">行ってみませんか？</h5>
-      </div>
+
+    <div class="col-md-12">
+      <%= javascript_pack_tag 'scripts/sample' %>
+      <div class="slideshow w-100" style="margin-bottom: -350px">
+        <div class="slide-img">
+          <%= image_tag "main1.jpg", class: "img-fluid w-100" %>
+        </div>
+        <div class="slide-img">
+          <%= image_tag "main2.jpg", class: "img-fluid w-100" %>
+        </div>
+        <div class="slide-img">
+          <%= image_tag "main3.jpg", class: "img-fluid w-100" %>
+        </div>
+    　</div>
     </div>
-    
-    <div class="col-md-7">
-      <div>
-        <%= image_tag 'tsuna1.png', class: 'w-50 image-fluid d-block mx-auto' %>
-      </div>
+    <div class="col-md-4" style="margin-bottom: 100px">
+      <div class="bg-white round-all text-center p-5">
+      <h1>SAVE neko</h1>
+      <h5 class="mt-5 mb-3">あなたも、保護猫カフェに</h5>
+      <h5>行ってみませんか？ <i class="fas fa-paw"></i></h5>
     </div>
-    
+
   </div>
 </div>

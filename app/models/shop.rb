@@ -8,7 +8,7 @@ class Shop < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :events, dependent: :destroy
-  has_one_attached :shop_image
+  has_one_attached :image
   
   geocoded_by :address
   after_validation :geocode
@@ -23,12 +23,12 @@ class Shop < ApplicationRecord
   validates :closed, presence: true
 
 
-  def get_shop_image(width, height)
+  def get_image(width, height)
     unless shop_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      shop_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-      shop_image.variant(resize_to_limit: [width, height]).processed
+      image.variant(resize_to_limit: [width, height]).processed
   end
 
   # shopのis_deletedがfalseならtrueを返す

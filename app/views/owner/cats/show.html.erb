@@ -4,7 +4,7 @@
       <h1 class="mb-5 text-center">- CAT DETAIL -</h1>
       <div class="card mb-4 shadow-sm" >
         <div class="bd-placeholder-img card-img-top">
-          <%= image_tag @cat.get_cat_image, class: "img-fluid img" %>
+          <%= image_tag @cat.get_image(600,400), class: "img-fluid img" %>
         </div>
         <div class="card-body">
           <h4><%= @cat.name %></h4>

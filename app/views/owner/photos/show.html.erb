@@ -4,7 +4,7 @@
       <h1 class="mb-5 text-center">- PHOTO DETAIL -</h1>
       <div class="card mb-4 shadow-sm">
         <div class="bd-placeholder-img card-img-top">
-          <%= image_tag @photo.get_image, class: "img-fluid img" %>
+          <%= image_tag @photo.get_image(600,400), class: "img-fluid img" %>
         </div>
         <div class="card-body">
           <h4><%= @photo.title %></h4>
@@ -16,7 +16,7 @@
               <%= link_to '編集する', edit_owner_photo_path(@photo.id), class: "btn btn-sm btn-outline-secondary"%>
               <%= link_to '削除する', owner_photo_path(@photo.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'btn btn-sm btn-outline-secondary' %>
             </div>
-            <small class="text-muted">投稿日：<%= @photo.created_at.strftime('%Y年%m月%d日') %></small>
+            <p class="text-right"><small>投稿日：<%= @photo.created_at.strftime('%Y年%m月%d日') %></small></p>
           </div>
         </div>
       </div>

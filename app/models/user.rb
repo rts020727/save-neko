@@ -26,7 +26,8 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-      image.variant(resize_to_limit: [width, height]).processed
+      # 画像を中心点からwidth,heightサイズに切り取り
+      image.variant(gravity: :center, resize:"#{width}x#{height}^", crop:"#{width}x#{height}+0+0").processed
   end
 
   # userのis_deletedがfalseならtrueを返す

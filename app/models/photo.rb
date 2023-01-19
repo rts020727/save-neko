@@ -10,12 +10,13 @@ class Photo < ApplicationRecord
   validates :content, presence: true, length: { maximum: 200 }
   validates :image, presence: true
 
-  def get_image
-    if image.attached?
-      image
-    else
-      'no_image.jpg'
+  def get_image(width, height)
+    unless image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
+      # 画像を中心点からwidth,heightサイズに切り取り
+      image.variant(gravity: :center, resize:"#{width}x#{height}^", crop:"#{width}x#{height}+0+0").processed
   end
 
   def favorited_by?(user)

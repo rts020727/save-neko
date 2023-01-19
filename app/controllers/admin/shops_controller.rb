@@ -1,4 +1,5 @@
 class Admin::ShopsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_shop, except: [:index]
   
   def index

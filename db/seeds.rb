@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Admin.create!(
+  [
+    {email: 'admin@test.com', password: 'adminpassword'}
+  ]
+)
+
 users = User.create!(
   [
     {email: 'tanaka@test.com', name: 'たなか', password: 'password', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")},
@@ -31,6 +37,13 @@ Shop.create!(
     {email: 'catclubcherry@test.com', name: 'Cat club cherry', password: 'ownerpassword', address: '大阪府高槻市北園町１９−１−６', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop14.jpg"), filename:"shop14.jpg") },
     {email: 'nekodazo@test.com', name: '猫Cafe 猫だ蔵', password: 'ownerpassword', address: '京都府中京区壬生土居ノ内町４−３', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop15.jpg"), filename:"shop15.jpg") },
     {email: 'moccha@test.com', name: 'MOCCHA 京都河原町店', password: 'ownerpassword', address: '京都府京都市中京区三条下ル大黒町５８', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop16.jpg"), filename:"shop16.jpg") },
+    {email: 'yumito@test.com', name: 'ゆうめいと', password: 'ownerpassword', address: '京都府京都市左京区一乗寺堂ノ前２３−２', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop17.jpg"), filename:"shop1.jpg") },
+　　
+  ]
+)
+
+Photo.create!(
+  [
     {email: 'yumito@test.com', name: 'ゆうめいと', password: 'ownerpassword', address: '京都府京都市左京区一乗寺堂ノ前２３−２', phone_number: '000-0123-1113', opening: '平日：14:00〜20:00, 休日：12:00〜18:00', closed: '月曜日', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shop17.jpg"), filename:"shop1.jpg") },
     
   ]

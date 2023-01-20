@@ -27,9 +27,15 @@
       <!--ブックマークしたお店があれば表示する-->
         <% if @bookmark_shops.present? %>
           <% @bookmark_shops.each do |shop| %>
-            <%= link_to shop_path(shop.id), class: "text-reset text-decoration-none" do %>
-              <div class='row position-relative justify-content-center round-all bg-white mt-5 pt-4'>
-                <%= render 'public/shops/shop', shop: shop %>
+          　<% if shop.is_deleted == false %>
+              <%= link_to shop_path(shop.id), class: "text-reset text-decoration-none" do %>
+                <div class='row position-relative justify-content-center round-all bg-white mt-5 pt-4'>
+                  <%= render 'public/shops/shop', shop: shop %>
+                </div>
+              <% end %>
+            <% else %>
+              <div class='row position-relative justify-content-center round-all bg-white p-4'>
+                <h3 class="bg-white">退会済み店舗のため表示できません</h3>
               </div>
             <% end %>
           <% end %>

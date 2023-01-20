@@ -9,9 +9,9 @@ class Public::SearchesController < ApplicationController
     @method = params[:method]
     
     if @model == "shop"
-      @records = Shop.search_for(@keyword, @method)
+      @records = Shop.where(is_deleted: 0).search_for(@keyword, @method)
     else
-      @records = Photo.search_for(@keyword, @method)
+      @records = Photo.where(is_deleted: 0).search_for(@keyword, @method)
     end
     
     # 全ての店舗から在籍している猫を性別と特徴を絞り込んで検索できる
@@ -21,7 +21,7 @@ class Public::SearchesController < ApplicationController
   end
   
   def search_form
-    @shops = Shop.all
+    @shops = Shop.where(is_deleted: 0)
   end
 
 end

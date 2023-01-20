@@ -1,8 +1,10 @@
-<div class="container">
+
   <% if @model == "shop" %>
+  <div class="container">
   <h1 class="text-center mb-5">SHOPS SEARCH FOR "<%= @keyword %>"</h1>
-  <div class="row d-flex justify-content-center">
+  
     <% if @records.present? %>
+    <div class="row d-flex justify-content-center">
       <div class="col-md-8">
         <% @records.each do |shop| %>
           <%= link_to shop_path(shop.id), class: 'text-decoration-none text-reset' do %>
@@ -32,3 +34,18 @@
   <% end %>
   </div>
 </div>
+
+<div class="container">
+  <% if @cats.present? %>
+  <div class="row d-flex justify-content-center align-items-center">
+    <% @cats.each do |cat| %>
+      
+        <div class="col-md-4">
+          <%= render "public/cats/cat", cat: cat %>
+        </div>
+      
+    <% end %>
+    </div>
+  <% end %>
+</div>
+  

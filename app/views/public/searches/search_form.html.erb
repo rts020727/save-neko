@@ -1,103 +1,37 @@
 <div class="container">
+  <h1 class="text-center">- SEARCH -</h1>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-8">
-      <h4 class="text-center">- キーワード検索 -</h4>
+
+    <div class="col-md-9 mt-5 bg-white round-all p-5">
+      <h4 class="text-center">- マップ -</h4>
+      <p class="text-center mt-3">マップに住所、地名、駅名などを入力すると、付近にあるお店を探すことができます！</p>
+        <%= render "map_search", shops: @shops %>
+    </div>
+
+    <div class="col-md-9 m-5 bg-white round-all p-5">
+      <h4 class="text-center m-5">- ねこちゃんの特徴 -</h4>
+      <p class="text-center mt-3">
+        各店舗に在籍しているねこちゃんの性別と特徴から検索することができます！<br>
+        お気に入りのねこちゃんを見つけてみてください！
+      </p>
+      <%= form_with url: search_path, method: :get do |f| %>
+        <table class="table table-borderless d-flex justify-content-center align-items-center">
+          <tr>
+            <td><%= f.select :gender, Cat.genders_i18n.invert,{ }, {class: 'form-control'} %></td>
+            <td><%= f.select :feature, Cat.features_i18n.invert,{ }, {class: 'form-control'} %></td>
+            <td><%= f.submit '新規登録する', class: 'btn btn-green' %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+
+    <div class="col-md-9 m-5 bg-white round-all p-5">
+      <h4 class="text-center m-5">- キーワード -</h4>
       <div>
         <%= render "keyword_search" %>
       </div>
     </div>
-    <div class="col-md-8">
-      <h4 class="text-center">- マップ検索 -</h4>
-      <table class="table table-borderless">
-        <tr class="d-flex justify-content-center align-items-center">
-          <td><input id="address" type="textbox" value="", class="form-control"></td>
-          <td><input type="button" value="地図を検索" onclick="codeAddress()", class="btn btn-green"></td>
-        </tr>
-      </table>
 
-      <div id="display"></div>
-
-      <div id='map' class="mx-auto"></div>
-
-      <style>
-          #map {
-              height: 400px;
-              width: 100%
-          }
-      </style>
-
-      <script>
-        let map
-
-        const display = document.getElementById('display')
-
-        // mapの表示関数
-        function initMap() {
-          geocoder = new google.maps.Geocoder()
-
-            // mapの初期位置を東京駅に指定, 縮尺を定義
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: {
-                lat: 35.6809591,
-                lng: 139.7673068
-              },
-              zoom: 12,
-            });
-
-            // mapsテーブルにあるそれぞれのレコードをmap上に表示
-            <% @shops.each do |shop| %>
-              (function(){
-              // ピンに表示する内容
-              const contentString =
-                '<%= link_to shop.name, shop_path(shop.id) %><br>' +
-                '<%= shop.address %>';
-
-              // マーカーを立てる
-              const marker = new google.maps.Marker({
-                position:{lat: <%= shop.latitude %>, lng: <%= shop.longitude %>},
-                map: map,
-                title: contentString
-              });
-
-              // ピンを挿して表示する
-              const infowindow = new google.maps.InfoWindow({
-              position: {lat: <%= shop.latitude %>, lng: <%= shop.longitude %>},
-              content: contentString
-              });
-
-              // マウスオーバーしたときに情報ウィンドウを表示
-              marker.addListener('mouseover', function() {
-              infowindow.open(map, marker);
-              });
-            })();
-            <% end %>
-        }
-
-        let geocoder
-
-        // 地図検索関数
-        function codeAddress() {
-          let inputAddress = document.getElementById('address').value;
-
-          geocoder.geocode({
-            'address': inputAddress
-          }, function (results, status) {
-            if (status == 'OK') {
-              map.setCenter(results[0].geometry.location);
-
-            display.textContent = "検索結果：" + results[ 0 ].geometry.location
-            } else {
-              alert('該当する結果がありませんでした：' + status);
-            }
-          });
-        }
-      </script>
-
-      <script
-        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"
-        async defer>
-      </script>
-    </div>
   </div>
 </div>
 

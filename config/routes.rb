@@ -27,9 +27,11 @@ Rails.application.routes.draw do
 
   #一般ユーザー
   scope module: :public do
-    resources :users, only: [:show, :edit, :update]
+    get '/users/:id/mybookmark' => 'users#mybookmark', as: 'users_mybookmark'
+    get '/users/:id/myfavorite' => 'users#myfavorite', as: 'users_myfavorite'
     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'users_unsubscribe'
     patch '/users/:id/withdraw' => 'users#withdraw', as: 'users_withdraw'
+    resources :users, only: [:show, :edit, :update]
     resources :photos, only: [:index, :show] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
@@ -41,7 +43,6 @@ Rails.application.routes.draw do
     end
     get "search" => "searches#search"
     get "search_form" => "searches#search_form"
-    
   end
 
   # 店舗オーナー

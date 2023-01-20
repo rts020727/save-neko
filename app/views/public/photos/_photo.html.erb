@@ -3,26 +3,30 @@
     <%= image_tag photo.get_image(600,400), class: "img-fluid img" %>
   </div>
   <div class="card-body">
-    <h4><%= photo.title %></h4>
-    <p><span><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'btn btn-green ml-1 mr-3' %></span>
-
+    <p><span><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'btn btn-green' %></span></p>
+    <h4>
+      <%= photo.title %>
       <!--ユーザーがサインインしていれば、いいねボタンを表示する-->
-    <% if user_signed_in? %>
-      <span class=<%= "favorite-btn" + photo.id.to_s %>>
-        <%= render "public/photos/favorite-btn", photo: photo %>
-      </span>
-    <% end %>
-    </p
-    <p><small>投稿日：<%= photo.created_at.strftime("%Y年%m月%d日") %></small></p>
+      <% if user_signed_in? %>
+        <span class="<%= "favorite-btn" + photo.id.to_s %> h5">
+          <%= render "public/photos/favorite-btn", photo: photo %>
+        </span>
+      <% end %>
+    </h4>
+    <p>
+      <small>投稿日：<%= photo.created_at.strftime("%Y年%m月%d日") %></small>
+      <% unless current_page?(photo_path(photo)) %>
+        <%= link_to "詳細", photo_path(photo.id), class: "ml-3 badge badge-info" %>
+      <% end %>
+    </p>
     <p class="card-text text-truncate">
       <%= photo.content %>
     </p>
     <div>
-      <small class="<%= "comment-count" + photo.id.to_s %> mr-3">コメント数：<%= photo.comments.count %></small>
-      <small class=<%= "favorite-btn-count" + photo.id.to_s %>>いいね数：<%= photo.favorites.count %></small>
       <!--表示しているページが一覧表示であれば詳細リンクを表示する-->
-      <% if current_page?(photos_path) || current_page?(user_path(current_user)) || current_page?(search_path) %>
-        <%= link_to "詳細", photo_path(photo.id), class: "ml-3 btn btn-sm btn-info" %>
+      <% if current_page?(photo_path(photo)) %>
+        <small class="<%= "comment-count" + photo.id.to_s %> mr-3">コメント数：<%= photo.comments.count %></small>
+        <small class=<%= "favorite-btn-count" + photo.id.to_s %>>いいね数：<%= photo.favorites.count %></small>
       <% end %>
     </div>
   </div>

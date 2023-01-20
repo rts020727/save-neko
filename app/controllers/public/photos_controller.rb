@@ -2,7 +2,7 @@ class Public::PhotosController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @photos = Photo.all
+    @photos = Photo.page(params[:page]).per(10).order("updated_at DESC")
   end
 
   def show

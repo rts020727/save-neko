@@ -1,11 +1,13 @@
 <div>
   <%= form_with url: search_path, method: :get do |f| %>
-    <table class="table table-borderless">
-      <tr class="d-flex justify-content-center align-items-center">
-        <td class="w-75">
-          <%= f.text_field :keyword, class: "form-control" %>
+    <table class="table table-borderless d-flex justify-content-center align-items-center">
+      <tr >
+        <td colspan="3">
+          <%= f.text_field :keyword, placeholder: "キーワードを入力してください！", class: "form-control" %>
         </td>
+      </tr>
         <!--検索するモデルを選択-->
+      <tr>
         <td>
           <%= f.select :model, options_for_select({ "Shop" => "shop", "Photo" => "photo" }), {}, { class: "btn btn-green p-1" } %>
         </td>

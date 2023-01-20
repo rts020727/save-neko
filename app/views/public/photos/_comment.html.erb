@@ -7,8 +7,8 @@
       <div class="ml-3">
         <p class="mt-4">-<%= comment.user.name %>さんのコメント-</p>
         <p class="mx-2"><%= safe_join(comment.photo_comment.split("\n"), tag(:br)) %></p>
-        
-        <!--コメントしたユーザーまたは、投稿した店舗ユーザーであれば-->
+
+        <!--コメントしたユーザーまたは、投稿した店舗ユーザーであれば削除ボタン表示-->
         <% if comment.user == current_user ||  photo.shop %>
           <p class="text-right">
             <%= link_to photo_comment_path(photo.id, comment.id), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
@@ -16,7 +16,7 @@
             <% end %>
           </p>
         <% end %>
-        
+
       </div>
     </div>
 </div>

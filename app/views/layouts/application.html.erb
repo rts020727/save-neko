@@ -31,6 +31,14 @@
       <% end %>
       
       <%= yield %>
+      
+      <!--ページトップへ移動-->
+      <span id="pagetop">
+        <a href="#" class="text-decoration-none text-reset">
+          <i class="far fa-arrow-alt-circle-up fa-3x"></i>
+        </a>
+      </span>
+      
     </main>
     <footer>
       <%= render "layouts/footer" %>

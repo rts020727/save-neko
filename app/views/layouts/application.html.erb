@@ -11,6 +11,7 @@
     <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
     <%= stylesheet_link_tag "application", media: "all"%>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    
     </head>
 
   <body>
@@ -30,6 +31,8 @@
         </div>
       <% end %>
       
+      
+      
       <%= yield %>
       
       <!--ページトップへ移動-->
@@ -38,7 +41,7 @@
           <i class="far fa-arrow-alt-circle-up fa-3x"></i>
         </a>
       </span>
-      
+      <%= javascript_pack_tag 'scripts/pagetop' %>
     </main>
     <footer>
       <%= render "layouts/footer" %>

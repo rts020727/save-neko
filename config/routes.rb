@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   devise_for :admins, controllers: {
-    registrations: 'admin/sessions'
+    sessions: 'admin/sessions'
   }
 
   devise_for :users, controllers: {
@@ -59,8 +59,8 @@ Rails.application.routes.draw do
 
   # サイト管理者
   namespace :admin do
-    resources :users
-    resources :shops
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :shops, only: [:index, :show, :edit, :update]
   end
 
 end

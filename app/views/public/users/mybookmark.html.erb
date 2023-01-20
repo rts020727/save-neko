@@ -5,7 +5,7 @@
       <% @bookmark_shops.each do |shop| %>
         <%= link_to shop_path(shop.id), class: "text-reset text-decoration-none" do %>
           <div class='row position-relative justify-content-center round-all bg-white mt-5 pt-4'>
-            <%= render 'shop', shop: shop %>
+            <%= render 'public/shops/shop', shop: shop %>
           </div>
         <% end %>
       <% end %>

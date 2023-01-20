@@ -1,15 +1,11 @@
-
 <div class="container">
   <h1 class="text-center m-5">- FAVORITE PHOTOS -</h1>
   <div class="row d-flex justify-content-center">
-    
-    
-      <% @favorite_photos.each do |photo| %>
-        <div class="col-md-4">
-          <%= render "public/photos/photo", photo: photo %>
-        </div>
-      <% end %>
-      <div class="d-flex justify-content-center"><%= paginate @favorite_photos %></div>
-    </div>
+    <% @favorite_photos.each do |photo| %>
+      <div class="col-md-4">
+        <%= render "public/photos/photo", photo: photo %>
+      </div>
+    <% end %>
   </div>
+  <div class="d-flex justify-content-center"><%= paginate @favorite_photos %></div>
 </div>

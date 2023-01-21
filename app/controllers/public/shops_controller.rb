@@ -2,7 +2,7 @@ class Public::ShopsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @shops = Shop.all
+    @shops = Shop.where(is_deleted: 0).page(params[:page]).per(5)
   end
 
   def show

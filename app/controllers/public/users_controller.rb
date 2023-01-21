@@ -24,19 +24,19 @@ class Public::UsersController < ApplicationController
     @favorite_photos = Photo.find(favorites)
     @favorite_photos = Kaminari.paginate_array(@favorite_photos).page(params[:page]).per(4)
   end
-  
+
   def mybookmark
     # ブックマークの一覧表示
     bookmarks = Bookmark.where(user_id: current_user).pluck(:shop_id)
     @bookmark_shops = Shop.find(bookmarks)
     @bookmark_shops = Kaminari.paginate_array(@bookmark_shops).page(params[:page]).per(6)
   end
-  
+
   def myfavorite
     # いいねの一覧表示
     favorites = Favorite.where(user_id: current_user).pluck(:photo_id)
     @favorite_photos = Photo.find(favorites)
-    @favorite_photos = Kaminari.paginate_array(@favorite_photos).page(params[:page]).per(12)
+    @favorite_photos = Kaminari.paginate_array(@favorite_photos).page(params[:page]).per(9)
   end
 
   def unsubscribe
@@ -66,5 +66,5 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :image)
   end
-
+  
 end

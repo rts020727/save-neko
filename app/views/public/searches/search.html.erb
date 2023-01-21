@@ -1,8 +1,8 @@
 
 <% if @model == "shop" %>
-  <% if @records.present? %>
   <div class="container">
   <h1 class="text-center">SHOPS SEARCH FOR "<%= @keyword %>"</h1>
+  <% if @records.present? %>
     <div class="row d-flex justify-content-center">
       <% @records.each do |shop| %>
         <div class="col-md-8">
@@ -21,9 +21,9 @@
   </div>
 
 <% elsif @model == "photo" %>
-  <% if @records.present? %>
   <div class="container">
   <h1 class="text-center mb-5">PHOTO SEARCH FOR "<%= @keyword %>"</h1>
+  <% if @records.present? %>
     <div class="row d-flex justify-content-center">
       <% @records.each do |photo| %>
         <div class="col-md-4">

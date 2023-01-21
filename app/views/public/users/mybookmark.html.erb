@@ -16,6 +16,7 @@
         <% end %>
       <% end %>
       <div class="d-flex justify-content-center mt-5"><%= paginate @bookmark_shops %></div>
+      <p class="text-right"><%= link_to "マイページへもどる", user_path(current_user), class:"btn btn-green" %></p>
     </div>
   </div>
 </div>

@@ -31,7 +31,7 @@
         <h1 class="text-center m-5">- EVENTS -</h1>
       </div>
 
-      <div class="col-md-7 bg-white justify-content-center">
+      <div class="col-md-7 bg-white justify-content-center p-4">
       <%= month_calendar events: @events do |date, events| %>
         <%= date.day %>
         <% events.each do |event| %>

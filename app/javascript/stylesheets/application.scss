@@ -6,20 +6,23 @@
   box-sizing: border-box;
 }
 
-body {
+.body-1 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  min-height: 100vh;
+  position: relative;
+  background-color: #fff;
+}
+
+.body-2 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   min-height: 100vh;
   position: relative;
   background-color: #eaf3ef;
 }
 
-h1 {
-  font-family: 'Montserrat';
-  font-size: 35px;
-}
-
 h1, h2, h3, h4, h5 {
   font-weight: bold;
+  color: #468976;
 }
 
 header {
@@ -28,7 +31,7 @@ header {
 }
 
 .nav-item, .navbar-brand {
-  font-family: 'Montserrat';
+  font-weight: bold;
   font-size: 20px;
   padding-right: 15px;
 }
@@ -43,6 +46,10 @@ footer {
   bottom: 0;
   width: 100%;
   padding: 30px;
+}
+
+.text-green {
+  color: #468976;
 }
 
 // ページトップへ移動するボタン
@@ -61,6 +68,7 @@ footer {
   border-radius: 20px;
   font-size: 20px;
   font-weight: bold;
+  
 }
 
 .round-all {
@@ -84,8 +92,9 @@ footer {
 
 .text-box {
   position: absolute;
-  bottom: 100px;
-  right: 30px;
+  bottom: 25%;
+  right: 10%;
+  background-color: #eaf3ef;
   z-index: 2;
 }
 

@@ -41,60 +41,7 @@
       </div>
 　　</div>
   </div>
-<div class="row justify-content-center">
-  <div class="col-md-12">
-    <h1 class="text-center m-5">- MAP -</h1>
-  </div>
-  <div class="col-md-12 center-block">
-    <script type="text/javascript">
-      function initMap() {
-        // shopのlatitude,longitudeから位置を特定
-        const shop_location = {lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>};
-        // 特定した位置をマップの中心として表示する
-        const map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 15,
-                  center: shop_location
-                  });
-        // 交通機関のレイヤーを表示
-        const transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(map);
-        
-        // ピンに表示する内容
-        const contentString =
-          '<%= @shop.name %><br>' +
-          '<%= @shop.address %>';
-        const infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
-    
-        // ピンを挿して表示する
-        const marker = new google.maps.Marker({
-                      position: shop_location,
-                      map: map,
-                      title: contentString
-                     });
-    
-        marker.addListener('mouseover', () => {
-          infowindow.open({
-            anchor: marker,
-            map,
-              shouldFocus: false,
-          });
-        });
-      }
-    </script>
-    
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"
-        async defer>
-    </script>
-    
-    <style type="text/css">
-      #map { height: 400px;
-             width: 70%;}
-    </style>
-    
-    <div id="map" class="mx-auto"></div>
-    </div>
+  <div class="row justify-content-center">
+    <%= render "shop_map" %>
   </div>
 </div>

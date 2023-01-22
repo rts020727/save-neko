@@ -17,6 +17,7 @@ class Public::UsersController < ApplicationController
   def show
     # ブックマークの一覧表示
     bookmarks = Bookmark.where(user_id: current_user).pluck(:shop_id)
+    # 二次元配列の並び替え
     @bookmark_shops = Shop.find(bookmarks)
     @bookmark_shops = Kaminari.paginate_array(@bookmark_shops).page(params[:page]).per(3)
     # いいねの一覧表示
@@ -66,5 +67,5 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :image)
   end
-  
+
 end

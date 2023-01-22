@@ -1,5 +1,6 @@
+<h1 class="text-center m-5">- COMMENT -</h1>
 <% photo.comments.each do |comment| %>
-<div class="row position-relative justify-content-center shadow m-5 bg-white">
+<div class="row position-relative justify-content-center m-5 bg-white">
     <div class="col-md-4 p-md-4 text-center">
       <%= image_tag comment.user.get_image(100,100), class: "bd-placeholder-img w-75 rounded m-3" %>
     </div>
@@ -20,4 +21,8 @@
       </div>
     </div>
 </div>
+<% end %>
+
+<% if photo.comments.blank? %>
+  <p class="text-center m-5">この投稿にはコメントがありません。</p>
 <% end %>

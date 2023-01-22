@@ -8,4 +8,5 @@
     <% end %>
   </div>
   <div class="d-flex justify-content-center"><%= paginate @favorite_photos %></div>
+  <p class="text-right"><%= link_to "マイページへもどる", user_path(current_user), class:"btn btn-green" %></p>
 </div>

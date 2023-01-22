@@ -2,19 +2,23 @@
   <div class="bd-placeholder-img card-img-top">
     <%= image_tag photo.get_image(600,400), class: "img-fluid img" %>
   </div>
-  <div class="card-body">
-    <p><span><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'btn btn-green' %></span></p>
-    <h4>
+  <div class="card-body  text-truncate">
+    <% if photo.shop.is_deleted == false %>
+    <p><%= link_to photo.shop.name, shop_path(photo.shop_id), class: 'btn btn-green' %></p>
+    <% else %>
+    <p><span class="btn-green btn">退会済みユーザー</span></p>
+    <% end %>
+    <h5>
       <%= photo.title %>
       <!--ユーザーがサインインしていれば、いいねボタンを表示する-->
       <% if user_signed_in? %>
-        <span class="<%= "favorite-btn" + photo.id.to_s %> h5">
+        <span class="<%= "favorite-btn" + photo.id.to_s %> h6">
           <%= render "public/photos/favorite-btn", photo: photo %>
         </span>
       <% end %>
-    </h4>
+    </h5>
     <p>
-      <small>投稿日：<%= photo.created_at.strftime("%Y年%m月%d日") %></small>
+      <small><%= photo.created_at.strftime("%Y年%m月%d日") %></small>
       <% unless current_page?(photo_path(photo)) %>
         <%= link_to "詳細", photo_path(photo.id), class: "ml-3 badge badge-info" %>
       <% end %>

@@ -1,8 +1,7 @@
-
 <% if @model == "shop" %>
-  <% if @records.present? %>
   <div class="container">
   <h1 class="text-center">SHOPS SEARCH FOR "<%= @keyword %>"</h1>
+  <% if @records.present? %>
     <div class="row d-flex justify-content-center">
       <% @records.each do |shop| %>
         <div class="col-md-8">
@@ -21,9 +20,9 @@
   </div>
 
 <% elsif @model == "photo" %>
-  <% if @records.present? %>
   <div class="container">
   <h1 class="text-center mb-5">PHOTO SEARCH FOR "<%= @keyword %>"</h1>
+  <% if @records.present? %>
     <div class="row d-flex justify-content-center">
       <% @records.each do |photo| %>
         <div class="col-md-4">
@@ -41,10 +40,11 @@
 <% end %>
 
 <div class="container">
+  <h1 class="text-center mb-5">- SEARCH FOR CATS -</h1>
   <% if @cats.present? %>
   <div class="row d-flex justify-content-center align-items-center">
     <% @cats.each do |cat| %>
-
+      
         <div class="col-md-4">
           <%= render "public/cats/cat", cat: cat %>
         </div>
@@ -52,5 +52,6 @@
     <% end %>
     </div>
   <% end %>
+  <p class="text-right m-5"><%= link_to "検索フォームへもどる", search_form_path, class: "btn btn-green" %></p>
 </div>
 

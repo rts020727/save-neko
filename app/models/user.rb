@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   def get_image(width, height)
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image_user.jpg')
+      file_path = Rails.root.join('app/public/assets/images/no_image_user.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
       # 画像を中心点からwidth,heightサイズに切り取り

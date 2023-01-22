@@ -16,7 +16,7 @@ class Public::SearchesController < ApplicationController
 
     # 全ての店舗から在籍している猫を性別と特徴を絞り込んで検索
     if params[:gender] && params[:feature]
-      @cats = Cat.where(gender: params[:gender]).where(feature: params[:feature])
+      @cats = Cat.where(gender: params[:gender]).where(feature: params[:feature]).page(params[:page]).per(6)
     end
   end
 

@@ -7,7 +7,7 @@
       
       <%= form_with model: @cat, url: owner_cat_path(@cat.id), method: :patch do |f| %>
       <div>
-        <table class='table text-center table-borderless'>
+        <table class='table text-center table-borderless table-responsive-md'>
           <tr>
             <td style='width: 30%'>写真</td>
             <td style='width: 50%'><%= f.file_field :image %></td>
@@ -28,15 +28,12 @@
             <td>紹介文</td>
             <td><%= f.text_area :introduction, class: 'form-control' %></td>
           </tr>
-          <tr>
-            <td></td>
-            <td><%= f.submit '編集を保存する', class: 'btn btn-sm btn-outline-secondary' %></td>
-          </tr>
         </table>
-        <% end %>
-        <div class="col-12 clearfix">
-          <div class="float-right"><%= link_to '一覧へもどる', owner_cats_path, class: 'btn btn-sm btn-outline-secondary' %></div>
+        <div class="col-12">
+          <p class="text-center m-5"><%= f.submit '編集を保存する', class: 'btn btn-info' %></p>
+          <p class="text-right"><%= link_to '一覧へもどる', owner_cats_path, class: 'btn btn-green' %></p>
         </div>
+        <% end %>
       </div>
     </div>
   </div>

@@ -2,12 +2,12 @@
   <div class="row d-flex justify-content-center">
     <div class="col-12 mb-3">
       <h1 class="text-center">- MY CATS -</h1>
-      <p class="text-right"><%= link_to '在籍ねこちゃんを新規登録する', new_owner_cat_path, class: 'btn btn-secondary' %></p>
+      <p class="text-right"><%= link_to '在籍ねこちゃんを新規登録する', new_owner_cat_path, class: 'btn btn-info' %></p>
     </div>
     <% if @cats.present? %>
       <% @cats.each do |cat| %>
         <div class="col-md-4">
-          <div class='card card-columns mb-4 shadow'>
+          <div class='card card-columns mb-4'>
             <div class="bd-placeholder-img card-img-top">
               <%= image_tag cat.get_image(600,400), class: "img-fluid img" %>
             </div>

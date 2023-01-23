@@ -14,7 +14,8 @@
         <p class="text-right m-3"><%= f.submit "イベント投稿する", class: "btn btn-info" %></p>
       <% end %>
     </div>
-    <div class="col-md-7 bg-white">
+    <div class="col-md-7">
+      <div class="bg-white my-auto p-3">
       <%= month_calendar events: @events do |date, events| %>
         <%= date.day %>
 
@@ -24,6 +25,27 @@
           </div>
         <% end %>
       <% end %>
+      </div>
+      <!--今月のイベント情報-->
+        <h5 class="text-center m-3 mt-5">〜 今月のイベント情報 〜</h5>
+        <% if @current_month_events.present? %>
+          <table class="table d-flex justify-content-center text-center">
+            <tr>
+              <th>イベント日時</th>
+              <th>タイトル</th>
+              <th>内容</th>
+            </tr>
+            <% @current_month_events.each do |event| %>
+            <tr>
+              <td><%= event.start_time.strftime("%Y 年 %m 月 %d 日") %></td>
+              <td><%= event.title %></td>
+              <td class="text-left"><%= safe_join(event.content.split("\n"), tag(:br)) %></td>
+            </tr>
+            <% end %>
+          </table>
+        <% else %>
+          <p class="text-center m-4">今月のイベント情報はありません。</p>
+        <% end %>
     </div>
   </div>
 </div>

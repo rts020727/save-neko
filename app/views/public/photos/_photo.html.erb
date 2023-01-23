@@ -9,7 +9,7 @@
     <p><span class="btn-green btn">退会済みユーザー</span></p>
     <% end %>
     <h5>
-      <%= photo.title %>
+      <span class="text-dark"><%= photo.title %></span>
       <!--ユーザーがサインインしていれば、いいねボタンを表示する-->
       <% if user_signed_in? %>
         <span class="<%= "favorite-btn" + photo.id.to_s %> h6">
@@ -23,15 +23,15 @@
         <%= link_to "詳細", photo_path(photo.id), class: "ml-3 badge badge-info" %>
       <% end %>
     </p>
-    <p class="card-text text-truncate">
-      <%= photo.content %>
+    <!--表示しているページが一覧表示であれば詳細リンクを表示する-->
+    <% if current_page?(photo_path(photo)) %>
+    <p class="card-text">
+      <%= safe_join(photo.content.split("\n"),tag(:br)) %>
     </p>
     <div>
-      <!--表示しているページが一覧表示であれば詳細リンクを表示する-->
-      <% if current_page?(photo_path(photo)) %>
-        <small class="<%= "comment-count" + photo.id.to_s %> mr-3">コメント数：<%= photo.comments.count %></small>
-        <small class=<%= "favorite-btn-count" + photo.id.to_s %>>いいね数：<%= photo.favorites.count %></small>
-      <% end %>
+      <small class="<%= "comment-count" + photo.id.to_s %> mr-3">コメント数：<%= photo.comments.count %></small>
+      <small class=<%= "favorite-btn-count" + photo.id.to_s %>>いいね数：<%= photo.favorites.count %></small>
     </div>
+    <% end %>
   </div>
 </div>

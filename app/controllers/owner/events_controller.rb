@@ -4,6 +4,8 @@ class Owner::EventsController < ApplicationController
   def index
     @events = current_shop.events
     @event = Event.new
+    # 今月のイベント情報の絞り込み
+    @current_month_events = current_shop.events.where(start_time: Time.now.all_month)
   end
   
   def create

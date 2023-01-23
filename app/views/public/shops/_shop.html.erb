@@ -9,13 +9,13 @@
     <% if current_page?(shop_path(shop.id)) %>
     <p class="mx-3 text-right <%= "bookmark-btn" + shop.id.to_s %>"><%= render "bookmark", shop: shop %></p>
     <% end %>
-    <p><strong>- 住所 -</strong></p>
+    <h5>住所</h5>
     <p class='mx-3'><%= shop.address %></p>
-    <p><strong>- 電話番号 -</strong></p>
+    <h5>電話番号</h5>
     <p class='mx-3'><%= shop.phone_number %></p>
-    <p><strong>- 営業日 -</strong></p>
+    <h5>営業日</h5>
     <p class='mx-3'><%= shop.opening %></p>
-    <p><strong>- 定休日 -</strong></p>
+    <h5>定休日</h5>
     <p class='mx-3'><%= shop.closed %></p>
   </div>
 </div>

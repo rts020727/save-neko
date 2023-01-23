@@ -6,20 +6,23 @@
   box-sizing: border-box;
 }
 
-body {
+.body-1 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  min-height: 100vh;
+  position: relative;
+  background-color: #fff;
+}
+
+.body-2 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   min-height: 100vh;
   position: relative;
   background-color: #eaf3ef;
 }
 
-h1 {
-  font-family: 'Montserrat';
-  font-size: 35px;
-}
-
 h1, h2, h3, h4, h5 {
   font-weight: bold;
+  color: #468976;
 }
 
 header {
@@ -28,7 +31,7 @@ header {
 }
 
 .nav-item, .navbar-brand {
-  font-family: 'Montserrat';
+  font-weight: bold;
   font-size: 20px;
   padding-right: 15px;
 }
@@ -45,7 +48,11 @@ footer {
   padding: 30px;
 }
 
-/*ページトップへ移動するボタン*/
+.text-green {
+  color: #468976;
+}
+
+// ページトップへ移動するボタン
 #pagetop {
   position: absolute;
   right: 50px;
@@ -53,7 +60,7 @@ footer {
 }
 
 
-/*全体的に使用*/
+// 全体的に使用
 .btn-green {
   background-color: #fff;
   color: #468976;
@@ -61,13 +68,14 @@ footer {
   border-radius: 20px;
   font-size: 20px;
   font-weight: bold;
+  
 }
 
 .round-all {
   border-radius: 20px;
 }
 
-/*トップページのスライドショー*/
+// トップページのスライドショー
 .slideshow {
   overflow: hidden;
   position: relative;
@@ -84,12 +92,13 @@ footer {
 
 .text-box {
   position: absolute;
-  bottom: 100px;
-  right: 30px;
+  bottom: 25%;
+  right: 10%;
+  background-color: #eaf3ef;
   z-index: 2;
 }
 
-/*photoページの設定*/
+// photoページの設定
 .card {
   border-radius: 20px;
 }
@@ -99,8 +108,9 @@ footer {
   border-radius: 20px 20px 0 0;
 }
 
-/*ページネーションのデザイン*/
+// ページネーションのデザイン
 .pagination>li>a {
   color: #468976;
   background-color: #fff;
 }
+

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
+    get '/shops/:id/photos' => 'shops#shop_photos', as: 'shop_photos'
     resources :shops, only: [:index, :show] do
       resource :bookmarks, only: [:create, :destroy]
       resources :cats, only: [:index]

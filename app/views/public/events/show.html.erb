@@ -4,16 +4,16 @@
     <div class="col-md-8 bg-white p-5 round-all">
       <table class="table table-borderless">
         <tr>
-          <td class="text-right">イベント名　：</td>
+          <td class="text-right">イベント名：</td>
           <td class="text-left"><%= @event.title %></td>
         </tr>
         <tr>
-          <td class="text-right">日付　　　　：</td>
+          <td class="text-right">日付：</td>
           <td class="text-left"><%= @event.start_time.strftime("%Y 年 %m 月 %d 日") %></td>
         </tr>
         <tr>
-          <td class="text-right">内容　　　　：</td>
-          <td class="text-left"><%= @event.content %></td>
+          <td class="text-right">内容：</td>
+          <td class="text-left"><%= safe_join(@event.content.split("\n"), tag(:br)) %></td>
         </tr>
       </table>
     </div>

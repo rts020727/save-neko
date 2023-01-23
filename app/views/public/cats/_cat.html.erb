@@ -5,7 +5,11 @@
   <div class="card-body">
     <h4><%= cat.name %></h4>
     <div class="card-text">
-      <p><%= cat.gender_i18n %> | <%= cat.feature_i18n %></p>
+      <p><%= cat.gender_i18n %> | <%= cat.feature_i18n %>
+        <% if current_page?(search_path) %>
+          <%= link_to cat.shop.name, shop_path(cat.shop_id), class: "badge badge-info ml-2" %>
+        <% end %>
+      </p>
       <p><%= safe_join(cat.introduction.split("\n"),tag(:br)) %></p>
     </div>
     <div>

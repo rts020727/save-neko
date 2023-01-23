@@ -1,0 +1,11 @@
+<%= form_with url: search_path, method: :get do |f| %>
+  <table class="table table-borderless d-flex justify-content-center align-items-center">
+    <tr>
+      <td><%= f.select :gender, Cat.genders_i18n.invert,{ }, {class: 'form-control'} %></td>
+      <td><%= f.select :feature, Cat.features_i18n.invert,{ }, {class: 'form-control'} %></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="text-right"><%= f.submit '検索', class: 'btn btn-green' %></td>
+    </tr>
+  </table>
+<% end %>

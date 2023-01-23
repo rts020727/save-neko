@@ -1,15 +1,22 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-md-10">
-    <h1 class="text-center">- BOOKMARK SHOPS -</h1>
+    <h1 class="text-center mb-5">- BOOKMARK SHOPS -</h1>
       <% @bookmark_shops.each do |shop| %>
-        <%= link_to shop_path(shop.id), class: "text-reset text-decoration-none" do %>
-          <div class='row position-relative justify-content-center round-all bg-white mt-5 pt-4'>
-            <%= render 'public/shops/shop', shop: shop %>
+        <% if shop.is_deleted == false %>
+          <%= link_to shop_path(shop.id), class: "text-reset text-decoration-none" do %>
+            <div class='row position-relative justify-content-center round-all bg-white my-5 pt-4'>
+              <%= render 'public/shops/shop', shop: shop %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class='row position-relative justify-content-center round-all bg-white p-4'>
+            <h3 class="bg-white">退会済み店舗のため表示できません</h3>
           </div>
         <% end %>
       <% end %>
       <div class="d-flex justify-content-center mt-5"><%= paginate @bookmark_shops %></div>
+      <p class="text-right"><%= link_to "マイページへもどる", user_path(current_user), class:"btn btn-green" %></p>
     </div>
   </div>
 </div>

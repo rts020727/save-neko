@@ -1,51 +1,59 @@
-
-  <% if @model == "shop" %>
+<!--店舗名のキーワード検索結果-->
+<% if @model == "shop" %>
   <div class="container">
-  <h1 class="text-center mb-5">SHOPS SEARCH FOR "<%= @keyword %>"</h1>
-  
-    <% if @records.present? %>
+  <h1 class="text-center">SHOPS SEARCH FOR "<%= @keyword %>"</h1>
+  <% if @records.present? %>
     <div class="row d-flex justify-content-center">
-      <div class="col-md-8">
-        <% @records.each do |shop| %>
-          <%= link_to shop_path(shop.id), class: 'text-decoration-none text-reset' do %>
-            <%= render 'public/shops/shop', shop: shop %>
+      <% @records.each do |shop| %>
+        <div class="col-md-8">
+          <%= link_to shop_path(shop.id), class: "text-reset text-decoration-none" do %>
+            <div class='row position-relative justify-content-center round-all bg-white mt-5 pt-4'>
+              <%= render 'public/shops/shop', shop: shop %>
+            </div>
           <% end %>
-        <% end %>
-      </div>
-    <% else %>
-      <h3 class="text-center m-5">一致する店舗はありません</h3>
-    <% end %>
-  </div>
-      
-  <% elsif @model == "photo" %>
-  <h1 class="text-center mb-5">PHOTO SEARCH FOR "<%= @keyword %>"</h1>
-  <div class="row d-flex justify-content-center">
-    <% if @records.present? %>
-      <% @records.each do |photo| %>
-        <div class="col-md-4">
-        <%= link_to photo_path(photo.id), class: "text-decoration-none text-reset" do %>
-          <%= render "public/photos/photo", photo: photo %>
-        <% end %>
         </div>
       <% end %>
-    <% else %>
-      <h3 class="text-center m-5">一致する投稿はありません</h3>
-    <% end %>
+    </div>
+    <div class="d-flex justify-content-center mt-5"><%= paginate @records %></div>
+  <% else %>
+    <h3 class="text-center m-5">一致する店舗はありません</h3>
   <% end %>
+  <p class="text-right m-5"><%= link_to "検索フォームへもどる", search_form_path, class: "btn btn-green" %></p>
   </div>
-</div>
-
-<div class="container">
-  <% if @cats.present? %>
-  <div class="row d-flex justify-content-center align-items-center">
-    <% @cats.each do |cat| %>
-      
+<!--投稿内容のキーワード検索結果-->
+<% elsif @model == "photo" %>
+  <div class="container">
+  <h1 class="text-center mb-5">PHOTO SEARCH FOR "<%= @keyword %>"</h1>
+  <% if @records.present? %>
+    <div class="row d-flex justify-content-center">
+      <% @records.each do |photo| %>
+        <div class="col-md-4">
+          <%= link_to photo_path(photo.id), class: "text-decoration-none text-reset" do %>
+            <%= render "public/photos/photo", photo: photo %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center mt-5"><%= paginate @records %></div>
+  <% else %>
+    <h3 class="text-center m-5">一致する投稿はありません</h3>
+  <% end %>
+  <p class="text-right m-5"><%= link_to "検索フォームへもどる", search_form_path, class: "btn btn-green" %></p>
+  </div>
+<% end %>
+<!--猫の性別、特徴からの絞り込み検索-->
+<% if @cats.present? %>
+  <div class="container">
+    <h1 class="text-center mb-5">- SEARCH FOR CATS -</h1>
+    <div class="row d-flex justify-content-center align-items-center">
+      <% @cats.each do |cat| %>
         <div class="col-md-4">
           <%= render "public/cats/cat", cat: cat %>
         </div>
-      
-    <% end %>
-    </div>
-  <% end %>
-</div>
-  
+      <% end %>
+      </div>
+    <div class="d-flex justify-content-center mt-5"><%= paginate @cats %></div>
+    <p class="text-right m-5"><%= link_to "検索フォームへもどる", search_form_path, class: "btn btn-green" %></p>
+  </div>
+<% end %>
+

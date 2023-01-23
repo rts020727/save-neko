@@ -5,10 +5,10 @@
       <%= render "layouts/errors", model: @photo %>
       <%= form_with model: @photo, url: owner_photo_path(@photo.id), method: :patch do |f| %>
       <div>
-        <table class='table text-center table-borderless'>
+        <table class='table text-center table-borderless table-responsive-md'>
           <tr>
-            <td style='width: 30%'>写真</td>
-            <td style='width: 50%'><%= f.file_field :image %></td>
+            <td>写真</td>
+            <td><%= f.file_field :image %></td>
           </tr>
           <tr>
             <td>タイトル</td>

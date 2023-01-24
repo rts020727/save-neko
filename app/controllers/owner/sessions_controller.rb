@@ -25,6 +25,10 @@ class Owner::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  
+  def after_sign_in_path_for(resource)
+    owner_shop_path(current_shop)
+  end
 
   # 退会しているかを判断するメソッド
   def shop_state

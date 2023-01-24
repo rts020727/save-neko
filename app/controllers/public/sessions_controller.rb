@@ -31,6 +31,10 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   
+  def after_sign_in_path_for(resource)
+    user_path(current_user)
+  end
+  
   # 退会しているか判断するメソッド
   def user_state
     @user = User.find_by(email: params[:user][:email])
@@ -41,4 +45,5 @@ class Public::SessionsController < Devise::SessionsController
       end
     end
   end
+
 end

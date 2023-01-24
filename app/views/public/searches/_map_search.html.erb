@@ -40,8 +40,11 @@
         zoom: 12,
       });
 
-      // mapsテーブルにあるそれぞれのレコードをmap上に表示
-      <% shops.each do |shop| %>
+    // mapsテーブルにあるそれぞれのレコードをmap上に表示
+    <% shops.each do |shop| %>
+      // 住所入力間違っており、正常に緯度軽度を抽出することができなかった場合、
+      // マップ全体が表示できなくなってしまうため、緯度軽度変換できている店舗のみ表示
+      <% if shop.latitude %>
         (function(){
         // ピンに表示する内容
         const contentString =
@@ -67,6 +70,7 @@
         });
       })();
       <% end %>
+    <% end %>
   }
 
   let geocoder

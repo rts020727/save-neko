@@ -2,7 +2,7 @@
   <%= date.day %>
 
   <% events.each do |event| %>
-    <div>
+    <div class="text-truncate">
       <%= link_to event.title, owner_event_path(event.id) %>
     </div>
   <% end %>

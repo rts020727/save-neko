@@ -10,10 +10,10 @@
     <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    
+
     </head>
 
-  <body class="body-2">
+  <body>
     <header>
       <%= render "layouts/header" %>
     </header>
@@ -23,15 +23,15 @@
         <%= alert %>
       </div>
       <% end %>
-      
+
       <% if notice.present? %>
         <div class="alert alert-info">
           <%= notice %>
         </div>
       <% end %>
-      
+
       <%= yield %>
-      
+
       <!--ページトップへ移動-->
       <span id="pagetop">
         <a href="#" class="text-decoration-none text-reset">

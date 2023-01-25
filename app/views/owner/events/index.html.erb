@@ -1,9 +1,9 @@
 <div class="container">
-  <h1 class="text-center">- EVENTS -</h1>
+  <h1 class="text-center mb-5">- EVENTS -</h1>
   <%= render "layouts/errors", model: @event %>
   <div class="row d-flex justify-content-center align-items-center">
 
-    <div class="col-md-3  m-3 p-3 border border-white m-5">
+    <div class="col-md-3 p-3 border border-white">
       <h3 class="text-center">新規登録</h3>
       <%= form_with model: @event, url: owner_events_path, method: :post do |f| %>
         <p>タイトル</p>
@@ -15,7 +15,7 @@
         <p class="text-right m-3"><%= f.submit "イベント投稿する", class: "btn btn-info" %></p>
       <% end %>
     </div>
-
+    <div class="col-md-1"></div>
     <div id="calendar" class="col-md-7 bg-white p-3">
       <%= render "owner/events/event_index", events: @events %>
     </div>

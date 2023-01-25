@@ -1,50 +1,45 @@
 <div class='container-fluid'>
   <div class='row justify-content-center'>
     <div class='col-sm-6'>
-      <div>
-        <h3 class="mb-5 mt-5">店舗情報編集</h3>
+      <h1 class="mb-5 mt-5 text-center">- SHOP EDIT -</h1>
+      <%= render "layouts/errors", model: @shop %>
+      <%= form_with model: @shop, url: owner_shop_path(@shop), method: :patch do |f| %>
+        <table class="table table-borderless table-sm">
+          <tr>
+            <td style="width: 40%"><%= f.label :name, '店舗名' %></td>
+            <td style="width: 60%%"><%= f.text_field :name, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :email, 'メールアドレス' %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :address, '住所' %></td>
+            <td><%= f.text_field :address, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :phone_number, '電話番号' %></td>
+            <td><%= f.text_field :phone_number, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :opening, '営業日' %></td>
+            <td><%= f.text_field :opening, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :closed, '定休日' %></td>
+            <td><%= f.text_field :closed, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :image, '店舗画像' %></td>
+            <td><%= f.file_field :image %></td>
+          </tr>
+        </table>
+        <div class="text-center">
+          <%= f.submit '保存する', class: 'btn btn-info mr-5' %>
+          <%= link_to '退会する', owner_shops_unsubscribe_path, class: 'btn btn-danger' %>
+        </div>
+      <% end %>
 
-        <%= form_with model: @shop, url: owner_shop_path(@shop), method: :patch do |f| %>
-          <table class="table table-borderless table-sm">
-            <tr>
-              <td style="width: 40%"><%= f.label :name, '店舗名' %></td>
-              <td style="width: 60%%"><%= f.text_field :name, class: 'form-control' %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :email, 'メールアドレス' %></td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :address, '住所' %></td>
-              <td><%= f.text_field :address, class: 'form-control' %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :phone_number, '電話番号' %></td>
-              <td><%= f.text_field :phone_number, class: 'form-control' %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :opening, '営業日' %></td>
-              <td><%= f.text_field :opening, class: 'form-control' %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :closed, '定休日' %></td>
-              <td><%= f.text_field :closed, class: 'form-control' %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :image, '店舗画像' %></td>
-              <td><%= f.file_field :image %></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <%= f.submit '編集', class: 'btn btn-outline-secondary ml-5' %>
-                <%= link_to '退会する', owner_shops_unsubscribe_path, class: 'btn btn-outline-danger ml-5' %>
-              </td>
-            </tr>
-          </table>
-        <% end %>
-
-      </div>
 　　</div>
   </div>
 </div>

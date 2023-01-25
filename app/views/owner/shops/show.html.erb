@@ -35,13 +35,13 @@
           </tr>
           <tr>
             <td></td>
-            <td class='text-center'><%= link_to '編集する', edit_owner_shop_path, class: 'btn btn-secondary' %></td>
+            <td class='text-center mt-5'><%= link_to '編集する', edit_owner_shop_path, class: 'btn btn-info' %></td>
           </tr>
         </table>
       </div>
 　　</div>
   </div>
   <div class="row justify-content-center mt-5">
-    <%= render "shop_map" %>
+    <%= render "shop_map", shop: @shop %>
   </div>
 </div>

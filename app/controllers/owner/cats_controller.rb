@@ -6,7 +6,7 @@ class Owner::CatsController < ApplicationController
   end
 
   def index
-    @cats = current_shop.cats
+    @cats = current_shop.cats.page(params[:page]).per(6)
   end
 
   def create

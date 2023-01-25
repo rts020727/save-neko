@@ -4,7 +4,7 @@
   <script type="text/javascript">
     function initMap() {
       // shopのlatitude,longitudeから位置を特定
-      const shop_location = {lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>};
+      const shop_location = {lat: <%= shop.latitude %>, lng: <%= shop.longitude %>};
       // 特定した位置をマップの中心として表示する
       const map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 15,
@@ -16,8 +16,8 @@
       
       // ピンに表示する内容
       const contentString =
-        '<%= @shop.name %><br>' +
-        '<%= @shop.address %>';
+        '<%= shop.name %><br>' +
+        '<%= shop.address %>';
       const infowindow = new google.maps.InfoWindow({
         content: contentString
       });
@@ -40,8 +40,8 @@
   </script>
   
   <script
-      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"
-      async defer>
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"
+    async defer>
   </script>
   
   <style type="text/css">
@@ -49,5 +49,12 @@
            width: 70%;}
   </style>
   
+  <!--新規登録時、住所が正常に緯度軽度変換されずに表示できない場合、警告文をだす-->
+  <% if shop.latitude.present? %>
   <div id="map" class="mx-auto"></div>
+  <% else %>
+    <h3 class="text-danger text-center">
+      住所の入力に間違いがある可能性があります。
+    </h3>
+  <% end %>
 </div>

@@ -6,7 +6,7 @@ class Owner::PhotosController < ApplicationController
   end
   
   def index
-    @photos = current_shop.photos
+    @photos = current_shop.photos.page(params[:page]).per(6)
   end
   
   def create

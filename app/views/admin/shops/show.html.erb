@@ -1,15 +1,39 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="col-md-5">
+    <div class="col-md-7">
       <h3 class="mb-5 text-center"><%= @shop.name + "の店舗詳細情報" %></h3>
       <table class="table">
         <tr>
-          <td>ユーザーID</td>
+          <td>店舗ID</td>
+          <td><%= @shop.id %></td>
+        </tr>
+        <tr>
+          <td>店舗名</td>
           <td><%= @shop.name %></td>
         </tr>
         <tr>
           <td>メールアドレス</td>
           <td><%= @shop.email %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= @shop.address %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= @shop.phone_number %></td>
+        </tr>
+        <tr>
+          <td>営業日</td>
+          <td><%= @shop.opening %></td>
+        </tr>
+        <tr>
+          <td>定休日</td>
+          <td><%= @shop.closed %></td>
+        </tr>
+        <tr>
+          <td>画像</td>
+          <td><%= image_tag @shop.get_image(150,100) %></td>
         </tr>
         <tr>
           <td>登録状況</td>

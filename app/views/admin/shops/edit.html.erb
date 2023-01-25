@@ -5,12 +5,32 @@
       <%= form_with model: @shop, url: admin_shop_path(@shop.id), method: :patch do |f| %>
       <table class="table">
         <tr>
-          <td>ユーザーID</td>
+          <td>店舗名</td>
           <td><%= f.text_field :name, class: "form-control" %></td>
         </tr>
         <tr>
           <td>メールアドレス</td>
           <td><%= f.email_field :email, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= f.text_field :phone_number, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <td>営業日</td>
+          <td><%= f.text_field :opening, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <td>定休日</td>
+          <td><%= f.text_field :closed, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <td>店舗画像</td>
+          <td><%= f.file_field :image %></td>
         </tr>
         <tr>
           <td>登録状況</td>

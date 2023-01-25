@@ -18,6 +18,12 @@
     </header>
     <main style="margin: -50px 0 -150px" class="text-green">
       <%= yield %>
+      <span id="pagetop">
+        <a href="#" class="text-decoration-none text-reset">
+          <i class="far fa-arrow-alt-circle-up fa-3x"></i>
+        </a>
+      </span>
+      <%= javascript_pack_tag 'scripts/pagetop' %>
     </main>
     <footer style="margin-top: 100px">
       <%= render "layouts/footer" %>

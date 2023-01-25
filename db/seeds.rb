@@ -57,18 +57,18 @@ shops = Shop.create!(
 )
 
 # 開発中に使用
-# shops.each do |shop|
-#   12.times do |n|
-#     shop.cats.create!(
-#       shop_id: shop.id,
-#       name: Faker::Creature::Cat.name,
-#       gender: rand(0..1),
-#       feature: n,
-#       introduction: "とってもいい子です。",
-#       image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/cat#{n}.jpg"), filename:"cat#{n}.jpg")
-#     )
-#   end
-# end
+shops.each do |shop|
+  12.times do |n|
+    shop.cats.create!(
+      shop_id: shop.id,
+      name: Faker::Creature::Cat.name,
+      gender: rand(0..1),
+      feature: n,
+      introduction: "とってもいい子です。",
+      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/cat#{n}.jpg"), filename:"cat#{n}.jpg")
+    )
+  end
+end
 
 # shops.each do |shop|
 #   4.times do |n|

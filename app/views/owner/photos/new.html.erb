@@ -1,10 +1,8 @@
 <div class='container-fluid'>
   <div class='row justify-content-center'>
-    <div class="col-12">
-      <%= render "layouts/errors", model: @photo %>
-    </div>
     <div class='col-lg-6'>
       <h1 class='mb-3 text-center'>- PHOTO NEW -</h1>
+      <%= render "layouts/errors", model: @photo %>
       <%= form_with model: @photo, url: owner_photos_path, method: :post do |f| %>
       <div>
         <table class='table text-center table-borderless table-responsive-md'>

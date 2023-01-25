@@ -1,36 +1,43 @@
 class Owner::ShopsController < ApplicationController
   before_action :authenticate_shop!
+  before_action :set_user
   
-
   def show
-    @shop = Shop.find(params[:id])
   end
 
   def edit
-    @shop = Shop.find(params[:id])
   end
   
   def update
-    @shop = Shop.find(params[:id])
-    @shop.update(shop_params)
-    redirect_to owner_shop_path(@shop)
+    if @shop.update(shop_params)
+      flash[:notice] = "編集の保存に成功しました！"
+      redirect_to owner_shop_path(@shop)
+    else
+      flash.now[:alert] = "編集の保存に失敗しました"
+      render :edit
+    end
   end
 
   def unsubscribe
-    @shop = Shop.find(params[:id])
   end
 
   def withdraw
-    @shop = Shop.find(params[:id])
-    @shop.update(is_deleted: true)
-    reset_session
-    redirect_to root_path
+    if @shop.update(is_deleted: true)
+      reset_session
+      flash[:notice] = "正常に退会しました。ご利用ありがとうございました。"
+      redirect_to root_path
+    end
   end
+  
   
   private
   
+  def set_user
+    @shop = Shop.find(params[:id])
+  end
+  
   def shop_params
-    params.require(:shop).permit(:name, :address, :phone_number, :opening, :closed, :image)
+    params.require(:shop).permit(:name, :email, :address, :phone_number, :opening, :closed, :image)
   end
   
 end

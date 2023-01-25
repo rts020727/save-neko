@@ -1,6 +1,6 @@
 <div class='container-fluid'>
   <div class='row justify-content-center'>
-    <div class='col-md-6'>
+    <div class='col-md-5'>
       <h1 class='mb-3 text-center'>- CAT NEW -</h1>
 
       <%= render "layouts/errors", model: @cat %>
@@ -9,8 +9,8 @@
       <%= form_with model: @cat, url: owner_cats_path, method: :post do |f| %>
         <table class='table text-center table-borderless table-responsive-md'>
           <tr>
-            <td style="width: 20%">写真</td>
-            <td style="width: 70%"><%= f.file_field :image %></td>
+            <td style="width: 40%">写真</td>
+            <td style="width: 60%"><%= f.file_field :image %></td>
           </tr>
           <tr>
             <td>名前</td>

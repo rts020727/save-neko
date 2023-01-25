@@ -59,23 +59,25 @@
     </div>
     <div class="col-md-2"></div>
   </div>
-  <div class="row d-flex justify-content-center align-items-center mx-1">
-    <div class="col-md-12">
-      <h3 class="text-center my-5">〜新着投稿〜</h3>
-    </div>
-    <% @photos.each do |photo| %>
-      <div class="col-md-3">
-        <%= render "public/photos/photo", photo: photo %>
-      </div>
-    <% end %>
-    <% unless user_signed_in? || shop_signed_in? %>
+  <% unless shop_signed_in? %>
+    <div class="row d-flex justify-content-center align-items-center mx-1">
       <div class="col-md-12">
-        <p class="text-right">
-          <%= link_to "SIGN UPする", signup_path, class: "btn btn-green mr-2" %>
-          <%= link_to "LOG INする", login_path, class: "btn btn-green" %>
-        </p>
+        <h3 class="text-center my-5">〜新着投稿〜</h3>
       </div>
-    <% end %>
-  </div>
+      <% @photos.each do |photo| %>
+        <div class="col-md-3">
+          <%= render "public/photos/photo", photo: photo %>
+        </div>
+      <% end %>
+      <% unless user_signed_in? %>
+        <div class="col-md-12">
+          <p class="text-right">
+            <%= link_to "SIGN UPする", signup_path, class: "btn btn-green mr-2" %>
+            <%= link_to "LOG INする", login_path, class: "btn btn-green" %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 <%= javascript_pack_tag 'scripts/slideshow' %>

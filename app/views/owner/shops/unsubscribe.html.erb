@@ -9,8 +9,8 @@
         <div class="text-center mt-5">
           <!--店舗オーナーがログインしている、かつログインユーザーであるか？-->
           <% if shop_signed_in? && @shop.id == current_shop.id %>
-            <%= link_to '退会しない', root_path, class: 'btn btn-outline-info mr-5' %>
-            <%= link_to '退会', owner_shops_withdraw_path(current_shop), method: :patch, 'data-confirm' => '本当に退会しますか？', class: 'btn btn-outline-danger ml-5' %>
+            <%= link_to '退会しない', owner_shop_path(@shop), class: 'btn btn-info mr-5' %>
+            <%= link_to '退会', owner_shops_withdraw_path(current_shop), method: :patch, 'data-confirm' => '本当に退会しますか？', class: 'btn btn-danger ml-5' %>
           <% end %>
         </div>
       </div>

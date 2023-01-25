@@ -17,6 +17,17 @@
       <%= render "layouts/header" %>
     </header>
     <main style="margin: -50px 0 -150px" class="text-green">
+      <% if alert.present? %>
+      <div class="alert alert-danger">
+        <%= alert %>
+      </div>
+      <% end %>
+
+      <% if notice.present? %>
+        <div class="alert alert-info">
+          <%= notice %>
+        </div>
+      <% end %>
       <%= yield %>
       <span id="pagetop">
         <a href="#" class="text-decoration-none text-reset">

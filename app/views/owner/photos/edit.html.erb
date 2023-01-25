@@ -1,6 +1,6 @@
 <div class='container-fluid'>
   <div class='row justify-content-center'>
-    <div class='col-md-8'>
+    <div class='col-md-4'>
       <h1 class='mb-5 text-center'>- PHOTO EDIT -</h1>
       <%= render "layouts/errors", model: @photo %>
       <%= form_with model: @photo, url: owner_photo_path(@photo.id), method: :patch do |f| %>

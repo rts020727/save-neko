@@ -1,6 +1,6 @@
-<div class="container-fluid m-0 p-0" >
-  <div class="row">
-    <div class="col-md-12" style="margin-bottom:15px">
+<div class="container-fluid m-0 p-0">
+  <div class="row position-relative">
+    <div class="col-md-12">
       <div class="slideshow">
         <div class="slide-img">
           <%= image_tag "main1.jpg", class: "img-fluid w-100" %>
@@ -11,14 +11,71 @@
         <div class="slide-img">
           <%= image_tag "main3.jpg", class: "img-fluid w-100" %>
         </div>
-    　</div>
-    　
-    　<div class="co-md-3 round-all text-center p-5 text-box">
+        <div class="col-sm-6 col-md-5 col-lg-3 py-5 round-all text-center text-box">
         <h1>SAVE neko</h1>
         <h5 class="mt-5 mb-3">あなたも、保護猫カフェに</h5>
         <h5>行ってみませんか？ <i class="fas fa-paw"></i></h5>
       </div>
+    　</div>
     </div>
+    <div class="col-md-12 text-center">
+      <h5 class="my-5">
+        ねこがすき、新しく家族を迎え入れることを検討している人、<br>
+        保護猫活動に興味がある人に、おすすめなサイトです！
+      </h5>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center px-2">
+    <div class="col-md-5 text-left">
+      <h4 class="my-5">ねこをすくうために何かしたい</h4>
+      <p>
+        ねこが大好きな人でも、<br>
+        保護猫活動をできるわけではないと思います。<br>
+        でも、ねこたちのために何かをしてあげたい。<br>
+        何かできることはないだろうか？<br>
+        そう思われる方も多いのではないでしょうか？
+      </p>
+    </div>
+    <div class="col-md-5 mt-5 ">
+      <div><%= image_tag "top2.jpg", class: "img-fluid w-100 round-all" %></div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center px-2">
+    <div class="col-md-5 mt-5 ">
+      <div><%= image_tag "top1.jpg", class: "img-fluid w-100 round-all" %></div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-3 text-left m-2">
+      <h4 class="my-5">
+        猫と人との幸せの輪を<br>
+        広げていきたい
+      </h4>
+      <p>
+        保護猫カフェは、ねこと遊ぶだけで支援になります。<br>
+        このサイトをきっかけに、保護猫カフェに足を運んだり、
+        新しい家族を迎え入れる出会いの場になればと思います。
+      </p>
+      <p class="text-right"><%= link_to "Aboutページへ", about_path, class: "btn btn-green mt-5" %></p>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center mx-1">
+    <div class="col-md-12">
+      <h3 class="text-center my-5">〜新着投稿〜</h3>
+    </div>
+    <% @photos.each do |photo| %>
+      <div class="col-md-3">
+        <%= render "public/photos/photo", photo: photo %>
+      </div>
+    <% end %>
+    <% unless user_signed_in? || shop_signed_in? %>
+      <div class="col-md-12">
+        <p class="text-right">
+          <%= link_to "SIGN UPする", signup_path, class: "btn btn-green mr-2" %>
+          <%= link_to "LOG INする", login_path, class: "btn btn-green" %>
+        </p>
+      </div>
+    <% end %>
   </div>
 </div>
 <%= javascript_pack_tag 'scripts/slideshow' %>

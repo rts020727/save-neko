@@ -12,12 +12,20 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     </head>
 
-  <body class="body-1">
+  <body>
     <header>
       <%= render "layouts/header" %>
     </header>
+    <main style="margin: -50px 0 -150px" class="text-green">
       <%= yield %>
-    <footer>
+      <span id="pagetop">
+        <a href="#" class="text-decoration-none text-reset">
+          <i class="far fa-arrow-alt-circle-up fa-3x"></i>
+        </a>
+      </span>
+      <%= javascript_pack_tag 'scripts/pagetop' %>
+    </main>
+    <footer style="margin-top: 100px">
       <%= render "layouts/footer" %>
     </footer>
   </body>

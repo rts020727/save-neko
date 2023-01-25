@@ -55,5 +55,11 @@
     <div class="d-flex justify-content-center mt-5"><%= paginate @cats %></div>
     <p class="text-right m-5"><%= link_to "検索フォームへもどる", search_form_path, class: "btn btn-green" %></p>
   </div>
+<% else %>
+ <div class="container">
+    <h1 class="text-center mb-5">- SEARCH FOR CATS -</h1>
+    <p class="text-center">一致する猫ちゃんの在籍情報はありませんでした。</p>
+    <p class="text-right m-5"><%= link_to "検索フォームへもどる", search_form_path, class: "btn btn-green" %></p>
+  </div>
 <% end %>
 

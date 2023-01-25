@@ -3,7 +3,7 @@ class Admin::ShopsController < ApplicationController
   before_action :set_shop, except: [:index]
   
   def index
-    @shops = Shop.all
+    @shops = Shop.page(params[:page]).per(10)
   end
 
   def show

@@ -10,5 +10,11 @@ class Public::ShopsController < ApplicationController
     @cats = @shop.cats.page(params[:page]).per(3).order('updated_at DESC')
     @events = @shop.events
     @current_month_events = @shop.events.where(start_time: Time.now.all_month)
+    @photos = @shop.photos.page(params[:page]).per(3).order('updated_at DESC')
+  end
+  
+  def shop_photos
+    @shop = Shop.find(params[:id])
+    @photos = @shop.photos.page(params[:page]).per(6).order('updated_at DESC')
   end
 end

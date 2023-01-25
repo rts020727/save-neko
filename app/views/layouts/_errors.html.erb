@@ -1,7 +1,7 @@
 <% if model.errors.any? %>
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="col-md-6 bg-warning text-danger pl-5 pt-3 mb-3">
+    <div class="col-md-8 bg-warning text-danger pl-5 pt-3 mb-3">
       <%= model.errors.count %>件エラーが発生しました
       <ul>
         <% model.errors.full_messages.each do |message| %>

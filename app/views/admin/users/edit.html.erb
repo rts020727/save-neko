@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="col-md-5">
+    <div class="col-md-6">
       <h3 class="mb-5 text-center">-<%= @user.name + "さんの登録情報の編集" %>-</h3>
+      <%= render "layouts/errors", model: @user %>
       <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
       <table class="table">
         <tr>

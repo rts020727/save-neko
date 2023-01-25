@@ -14,8 +14,10 @@ class Admin::ShopsController < ApplicationController
   
   def update
     if @shop.update(shop_params)
+      flash[:notice] = "編集の保存に成功しました！"
       redirect_to admin_shop_path(@shop.id)
     else
+      flash[:alert] = "編集の保存に失敗しました"
       render :edit
     end
   end
@@ -27,6 +29,6 @@ class Admin::ShopsController < ApplicationController
   end
   
   def shop_params
-    params.require(:shop).permit(:name, :email, :is_deleted)
+    params.require(:shop).permit(:name, :email, :address, :phone_number, :opening, :closed, :image, :is_deleted)
   end
 end

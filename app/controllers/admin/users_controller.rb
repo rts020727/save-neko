@@ -14,8 +14,10 @@ class Admin::UsersController < ApplicationController
   
   def update
     if @user.update(user_params)
+      flash[:notice] = "編集の保存に成功しました！"
       redirect_to admin_user_path(@user.id)
     else
+      flash.now[:alert] = "編集の保存に失敗しました"
       render :edit
     end
   end

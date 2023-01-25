@@ -59,7 +59,7 @@
     </div>
     <div class="col-md-2"></div>
   </div>
-  <% unless shop_signed_in? %>
+  <% unless shop_signed_in? || admin_signed_in? %>
     <div class="row d-flex justify-content-center align-items-center mx-1">
       <div class="col-md-12">
         <h3 class="text-center my-5">〜新着投稿〜</h3>

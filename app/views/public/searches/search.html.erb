@@ -40,9 +40,8 @@
   <% end %>
   <p class="text-right m-5"><%= link_to "検索フォームへもどる", search_form_path, class: "btn btn-green" %></p>
   </div>
-<% end %>
 <!--猫の性別、特徴からの絞り込み検索-->
-<% if @cats.present? %>
+<% elsif @cats.present? %>
   <div class="container">
     <h1 class="text-center mb-5">- SEARCH FOR CATS -</h1>
     <div class="row d-flex justify-content-center align-items-center">

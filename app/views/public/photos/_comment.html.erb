@@ -6,7 +6,7 @@
       </div>
       <div class="col-md-8 position-static p-4 pl-md-0 text-left">
         <div class="ml-3">
-          <% if comment.user.is_deleted == 0 %>
+          <% if comment.user.is_deleted == false %>
             <p class="mt-4">-<%= comment.user.name %>さんのコメント-</p>
           <% else %>
             <p class="mt-4">-退会済みユーザーのコメント-</p>

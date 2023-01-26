@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'users_unsubscribe'
     patch '/users/:id/withdraw' => 'users#withdraw', as: 'users_withdraw'
     resources :users, only: [:show, :edit, :update]
+    get '/shops/:id/photos' => 'shops#shop_photos', as: 'shop_photos'
     resources :photos, only: [:index, :show] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]

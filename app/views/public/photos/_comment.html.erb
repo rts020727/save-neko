@@ -1,4 +1,3 @@
-<h1 class="text-center m-5">- COMMENT -</h1>
 <% photo.comments.each do |comment| %>
 <div class="row position-relative justify-content-center m-5 bg-white">
     <div class="col-md-4 p-md-4 text-center">
@@ -10,7 +9,7 @@
         <p class="mx-2"><%= safe_join(comment.photo_comment.split("\n"), tag(:br)) %></p>
 
         <!--コメントしたユーザーまたは、投稿した店舗ユーザーであれば削除ボタン表示-->
-        <% if comment.user == current_user ||  photo.shop %>
+        <% if comment.user == current_user %>
           <p class="text-right">
             <%= link_to photo_comment_path(photo.id, comment.id), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
               削除する<i class="fas fa-trash-alt"></i>
@@ -21,8 +20,4 @@
       </div>
     </div>
 </div>
-<% end %>
-
-<% if photo.comments.blank? %>
-  <p class="text-center m-5">この投稿にはコメントがありません。</p>
 <% end %>

@@ -1,0 +1,3 @@
+$(".comment-count<%= @photo.id %>").html("コメント数：<%= @photo.comments.count %>");
+$(".comment-index<%= @photo.id %>").html("<%= j(render "owner/photos/comment", photo: @photo) %>");
+$("textarea").val("")

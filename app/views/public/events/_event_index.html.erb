@@ -2,7 +2,7 @@
   <%= date.day %>
   <% events.each do |event| %>
     <div>
-      <%= link_to event.title, shop_event_path(shop, event.id), remote: true %>
+      <%= link_to event.title, shop_event_path(shop, event.id) %>
     </div>
   <% end %>
 <% end %>

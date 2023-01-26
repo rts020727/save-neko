@@ -52,7 +52,7 @@ Rails.application.routes.draw do
     patch '/shops/:id/withdraw' => 'shops#withdraw', as: 'shops_withdraw'
     resources :cats
     resources :photos do
-      resources :comment, only: [:destroy]
+      resources :comments, only: [:destroy]
     end
     resources :events
   end

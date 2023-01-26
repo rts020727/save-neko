@@ -3,6 +3,7 @@
     <div class='col-md-6 text-center'>
 
       <h2 class='mb-4'>-MY PAGE編集-</h2>
+      <%= render "layouts/errors", model: @user %>
       <%= form_with model: @user, url: user_path(current_user.id), method: :patch do |f| %>
       <table class='table table-borderless'>
         <tr>
@@ -21,7 +22,7 @@
         <%= f.submit '保存する', class: 'btn btn-secondary mt-3 mr-5' %>
         <%= f.submit '退会する', class: 'btn btn-danger mt-3' %>
       <% end %>
-
+      
     </div>
   </div>
 </div>

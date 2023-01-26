@@ -1,23 +1,27 @@
-<% photo.comments.each do |comment| %>
-<div class="row position-relative justify-content-center m-5 bg-white">
-    <div class="col-md-4 p-md-4 text-center">
-      <%= image_tag comment.user.get_image(100,100), class: "bd-placeholder-img w-75 rounded m-3" %>
-    </div>
-    <div class="col-md-8 position-static p-4 pl-md-0 text-left">
-      <div class="ml-3">
-        <p class="mt-4">-<%= comment.user.name %>さんのコメント-</p>
-        <p class="mx-2"><%= safe_join(comment.photo_comment.split("\n"), tag(:br)) %></p>
+<% if @photo.comments.present? %>
+  <% photo.comments.each do |comment| %>
+    <div class="row position-relative justify-content-center m-5 bg-white">
+      <div class="col-md-4 p-md-4 text-center">
+        <%= image_tag comment.user.get_image(100,100), class: "bd-placeholder-img w-75 rounded m-3" %>
+      </div>
+      <div class="col-md-8 position-static p-4 pl-md-0 text-left">
+        <div class="ml-3">
+          <p class="mt-4">-<%= comment.user.name %>さんのコメント-</p>
+          <p class="mx-2"><%= safe_join(comment.photo_comment.split("\n"), tag(:br)) %></p>
 
-        <!--コメントしたユーザーまたは、投稿した店舗ユーザーであれば削除ボタン表示-->
-        <% if comment.user == current_user %>
-          <p class="text-right">
-            <%= link_to photo_comment_path(photo.id, comment.id), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
-              削除する<i class="fas fa-trash-alt"></i>
-            <% end %>
-          </p>
-        <% end %>
+          <!--コメントしたユーザーまたは、投稿した店舗ユーザーであれば削除ボタン表示-->
+          <% if comment.user == current_user %>
+            <p class="text-right">
+              <%= link_to photo_comment_path(photo.id, comment.id), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
+                削除する<i class="fas fa-trash-alt"></i>
+              <% end %>
+            </p>
+          <% end %>
 
+        </div>
       </div>
     </div>
-</div>
+  <% end %>
+<% else %>
+  <h5 class="text-center m-5">まだコメントはありません。</h5>
 <% end %>

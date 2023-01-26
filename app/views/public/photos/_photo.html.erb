@@ -2,7 +2,7 @@
   <div class="bd-placeholder-img card-img-top">
     <%= image_tag photo.get_image(600,400), class: "img-fluid img" %>
   </div>
-  <div class="card-body  text-truncate">
+  <div class="card-body">
     <!--ユーザーがサインインしていれば、いいねボタンを表示する-->
     <% if user_signed_in? %>
       <% if photo.shop.is_deleted == false %>
@@ -31,9 +31,14 @@
     <% end %>
     <!--表示しているページが一覧表示であれば詳細リンクを表示する-->
     <% if current_page?(photo_path(photo)) %>
-    <p class="card-text">
+    <div class="overflow-wrap">
+      <div class="normal">
+      <p>
       <%= safe_join(photo.content.split("\n"),tag(:br)) %>
-    </p>
+      </p>
+      </div>
+    </div>
+
     <div>
       <small class="<%= "comment-count" + photo.id.to_s %> mr-3">コメント数：<%= photo.comments.count %></small>
       <small class=<%= "favorite-btn-count" + photo.id.to_s %>>いいね数：<%= photo.favorites.count %></small>

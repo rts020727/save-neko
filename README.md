@@ -44,6 +44,11 @@
 
 ## 設計書
 
+・ER図　
+　https://app.diagrams.net/#G1KHFS-PvsIJu0jI7qayCw90F5HjK3ADGo
+・テーブル定義書
+　https://docs.google.com/spreadsheets/d/1nqaEBd-6q811ARF_KyOWa5cU40__KJjb/edit?usp=sharing&ouid=104753420068638761204&rtpof=true&sd=true
+
 
 ## 開発環境
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -52,3 +57,6 @@
 - IDE：Cloud9
 
 ## 使用素材
+フリー素材
+https://free-materials.com/
+https://www.pakutaso.com/

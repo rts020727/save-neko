@@ -8,7 +8,7 @@ class Photo < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 20 }
   validates :content, presence: true, length: { maximum: 200 }
-  validates :image, presence: true
+  # validates :image, presence: true
 
   def get_image(width, height)
     unless image.attached?

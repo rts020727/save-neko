@@ -44,10 +44,10 @@
 
 ## 設計書
 
-・ER図　
-　https://app.diagrams.net/#G1KHFS-PvsIJu0jI7qayCw90F5HjK3ADGo
-・テーブル定義書
-　https://docs.google.com/spreadsheets/d/1nqaEBd-6q811ARF_KyOWa5cU40__KJjb/edit?usp=sharing&ouid=104753420068638761204&rtpof=true&sd=true
+・ER図<br>
+　https://app.diagrams.net/#G1KHFS-PvsIJu0jI7qayCw90F5HjK3ADGo<br>
+・テーブル定義書<br>
+　https://docs.google.com/spreadsheets/d/1nqaEBd-6q811ARF_KyOWa5cU40__KJjb/edit?usp=sharing&ouid=104753420068638761204&rtpof=true&sd=true<br>
 
 
 ## 開発環境
@@ -57,6 +57,6 @@
 - IDE：Cloud9
 
 ## 使用素材
-フリー素材
-https://free-materials.com/
-https://www.pakutaso.com/
+フリー素材<br>
+https://free-materials.com/<br>
+https://www.pakutaso.com/<br>

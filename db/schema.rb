@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2023_02_02_015301) do
     t.integer "user_id", null: false
     t.integer "shop_id", null: false
     t.text "comment", null: false
+    t.decimal "score", precision: 5, scale: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

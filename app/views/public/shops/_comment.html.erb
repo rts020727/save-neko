@@ -1,0 +1,48 @@
+<% if shop.shop_comments.present? %>
+  <% shop.shop_comments.each do |shop_comment| %>
+    <div class="row position-relative justify-content-center m-5 bg-white">
+      <div class="col-md-4 p-md-4 text-center">
+        <%= image_tag shop_comment.user.get_image(100,100), class: "bd-placeholder-img w-75 rounded m-3" %>
+      </div>
+      <div class="col-md-8 position-static p-4 pl-md-0 text-left">
+        <div class="ml-3">
+          <p class="mt-4">
+            <% if shop_comment.user.is_deleted == false %>
+              -<%= shop_comment.user.name %>さんのコメント-
+            <% else %>
+              -退会済みユーザーのコメント-
+            <% end %>
+            <!--Natural Language によってコメント内容の感情分析-->
+            <span class="sentiment-score text-green h5">
+              <% if shop_comment.score.to_f > 0.6 %>
+                <i class="far fa-laugh-beam"></i>
+              <% elsif shop_comment.score.to_f > 0.2%>
+                <i class="far fa-laugh"></i>
+              <% elsif shop_comment.score.to_f > -0.2 %>
+                <i class="far fa-meh"></i>
+              <% elsif shop_comment.score.to_f > -0.6 %>
+                <i class="far fa-frown-open"></i>
+              <% else %>
+                <i class="far fa-tired"></i>
+              <% end %>
+            </span>
+          </p>
+          <p class="mx-2"><%= safe_join(shop_comment.comment.split("\n"), tag(:br)) %></p>
+
+          
+          <!--コメントしたユーザーまたは、投稿した店舗ユーザーであれば削除ボタン表示-->
+          <% if shop_comment.user == current_user %>
+            <p class="text-right">
+              <%= link_to shop_shop_comment_path(shop.id, shop_comment.id), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
+                削除する<i class="fas fa-trash-alt"></i>
+              <% end %>
+            </p>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <h5 class="text-center m-5">まだコメントはありません。</h5>
+<% end %>

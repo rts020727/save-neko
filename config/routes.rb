@@ -34,13 +34,14 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     get '/shops/:id/photos' => 'shops#shop_photos', as: 'shop_photos'
     resources :photos, only: [:index, :show] do
-      resources :comments, only: [:create, :destroy]
+      resources :photo_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
     resources :shops, only: [:index, :show] do
       resource :bookmarks, only: [:create, :destroy]
       resources :cats, only: [:index]
       resources :events, only: [:show]
+      resources :shop_comments, only: [:create, :destroy]
     end
     get "search" => "searches#search"
     get "search_form" => "searches#search_form"
@@ -48,12 +49,14 @@ Rails.application.routes.draw do
 
   # 店舗オーナー
   namespace :owner do
-    resources :shops, only: [:show, :edit, :update]
+    resources :shops, only: [:show, :edit, :update] do
+      resources :shop_comments, only: [:destroy]
+    end
     get '/shops/:id/unsubscribe' => 'shops#unsubscribe', as: 'shops_unsubscribe'
     patch '/shops/:id/withdraw' => 'shops#withdraw', as: 'shops_withdraw'
     resources :cats
     resources :photos do
-      resources :comments, only: [:destroy]
+      resources :photo_comments, only: [:destroy]
     end
     resources :events
   end

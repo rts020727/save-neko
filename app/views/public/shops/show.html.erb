@@ -1,14 +1,47 @@
 <div class='container'>
   <h1 class="text-center">- SHOP DETAIL -</h1>
+  <!--ページ内リンク-->
+  <div class="text-center mt-5">
+    <a href="#comments" class="btn btn-green mr-3">COMMENTS</a>
+    <a href="#cats" class="btn btn-green mr-3">CATS</a>
+    <a href="#events" class="btn btn-green mr-3">EVENTS</a>
+    <a href="#photos" class="btn btn-green">PHOTOS</a>
+  </div>
   <div class='row justify-content-center round-all bg-white mt-5 pt-4'>
     <%= render "shop", shop: @shop %>
-  </div> 
+  </div>
+  <a id="comments"><h1 class="text-center mt-5">- COMMENTS -</h1></a>
+  <p class="text-center mt-5">
+    投稿されたコメントの内容が、ポジティブな内容かネガティブな内容かを自動的に判断し、顔文字を表示します。<br>
+    お店の評価の参考にしてください！<br>
+    とてもいい：<i class="far fa-laugh-beam"></i> 
+    いい：<i class="far fa-laugh"></i> 
+    ふつう：<i class="far fa-meh"></i> 
+    いまいち：<i class="far fa-frown-open"></i> 
+    ざんねん：<i class="far fa-tired"></i>
+  </p>
+  <div class="row justify-content-center">
+    <div class="col-md-7 <%= "comment-index" + @shop.id.to_s %>">
+      <%= render "comment", shop: @shop %>
+    </div>
+  </div>
+  <div id="comments_error">
+    <%= render "layouts/errors", model: @comment %>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-5">
+      <%= form_with model: [@shop, @comment], url: shop_shop_comments_path(@shop), method: :post, local: false do |f| %>
+        <%= f.text_area :comment, placeholder: "ぜひコメントしてください！", class: "form-control m-3" %>
+        <p class="text-right"><%= f.submit "送信する", class: "btn btn-info" %></p>
+      <% end %>
+    </div>
+  </div>
   <div class='row justify-content-center mt-5'>
     <%= render "owner/shops/shop_map", shop: @shop %>
   </div>
   <div class="row justify-content-center">
     <div class="col-md-12">
-      <h1 class="text-center m-5">- CATS -</h1>
+      <a id="cats"><h1 class="text-center m-5">- CATS -</h1></a>
     </div>
 
     <% if @cats.present? %>
@@ -28,10 +61,10 @@
       </div>
     <% end %>
   </div>
-    
+
   <div class="row justify-content-center">
     <div class="col-md-12">
-      <h1 class="text-center m-5">- EVENTS -</h1>
+      <a id="events"><h1 class="text-center m-5">- EVENTS -</h1></a>
     </div>
     <div id="calendar" class="col-md-7 bg-white justify-content-center p-4">
       <%= render "public/events/event_index", events: @events, shop: @shop %>
@@ -59,10 +92,10 @@
       <% end %>
     </div>
   </div>
-    
+
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-12">
-      <h1 class="text-center m-5">- PHOTOS -</h1>
+      <a id="photos"><h1 class="text-center m-5">- PHOTOS -</h1></a>
     </div>
     <% if @photos.present? %>
       <% @photos.each do |photo| %>

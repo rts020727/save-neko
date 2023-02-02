@@ -7,6 +7,6 @@ class Public::PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
-    @comment = Comment.new
+    @comment = PhotoComment.new
   end
 end

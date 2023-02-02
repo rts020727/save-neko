@@ -8,6 +8,7 @@ class Shop < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :shop_comments, dependent: :destroy
   has_one_attached :image
   
   geocoded_by :address
@@ -51,4 +52,5 @@ class Shop < ApplicationRecord
       Shop.where("name LIKE?", "%#{keyword}%")
     end
   end
+  
 end

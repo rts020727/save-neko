@@ -49,7 +49,9 @@ Rails.application.routes.draw do
 
   # 店舗オーナー
   namespace :owner do
-    resources :shops, only: [:show, :edit, :update]
+    resources :shops, only: [:show, :edit, :update] do
+      resources :shop_comments, only: [:destroy]
+    end
     get '/shops/:id/unsubscribe' => 'shops#unsubscribe', as: 'shops_unsubscribe'
     patch '/shops/:id/withdraw' => 'shops#withdraw', as: 'shops_withdraw'
     resources :cats

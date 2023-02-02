@@ -34,13 +34,14 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     get '/shops/:id/photos' => 'shops#shop_photos', as: 'shop_photos'
     resources :photos, only: [:index, :show] do
-      resources :comments, only: [:create, :destroy]
+      resources :photo_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
     resources :shops, only: [:index, :show] do
       resource :bookmarks, only: [:create, :destroy]
       resources :cats, only: [:index]
       resources :events, only: [:show]
+      resources :shop_comments, only: [:create, :destroy]
     end
     get "search" => "searches#search"
     get "search_form" => "searches#search_form"

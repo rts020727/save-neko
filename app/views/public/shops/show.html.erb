@@ -2,7 +2,24 @@
   <h1 class="text-center">- SHOP DETAIL -</h1>
   <div class='row justify-content-center round-all bg-white mt-5 pt-4'>
     <%= render "shop", shop: @shop %>
-  </div> 
+  </div>
+  <h1 class="text-center m-5">- COMMENTS -</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-7 <%= "comment-index" + @shop.id.to_s %>">
+      <%= render "comment", shop: @shop %>
+    </div>
+  </div>
+  <div id="comments_error">
+    <%= render "layouts/errors", model: @comment %>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-5">
+      <%= form_with model: [@shop, @comment], url: shop_shop_comments_path(@shop), method: :post, local: false do |f| %>
+        <%= f.text_area :comment, placeholder: "ぜひコメントしてください！", class: "form-control m-3" %>
+        <p class="text-right"><%= f.submit "送信する", class: "btn btn-info" %></p>
+      <% end %>
+    </div>
+  </div>
   <div class='row justify-content-center mt-5'>
     <%= render "owner/shops/shop_map", shop: @shop %>
   </div>
@@ -28,7 +45,7 @@
       </div>
     <% end %>
   </div>
-    
+
   <div class="row justify-content-center">
     <div class="col-md-12">
       <h1 class="text-center m-5">- EVENTS -</h1>
@@ -59,7 +76,7 @@
       <% end %>
     </div>
   </div>
-    
+
   <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-12">
       <h1 class="text-center m-5">- PHOTOS -</h1>

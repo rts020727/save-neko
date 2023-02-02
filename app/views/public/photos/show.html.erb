@@ -7,20 +7,20 @@
     </div>
   </div>
   <h1 class="text-center mt-5">- COMMENTS -</h1>
-  
+
     <div class="row d-flex justify-content-center">
       <div class="col-md-7 <%= "comment-index" + @photo.id.to_s %>">
         <%= render "comment", photo: @photo %>
       </div>
     </div>
-  
+
     <div id="comments_error">
       <%= render "layouts/errors", model: @comment %>
     </div>
   <div class="row d-flex justify-content-center">
     <div class="col-md-5">
-      <%= form_with model: [@photo, @comment], url: photo_comments_path(@photo), method: :post, local: false do |f| %>
-        <%= f.text_area :photo_comment, placeholder: "ぜひコメントしてください！", class: "form-control m-3" %>
+      <%= form_with model: [@photo, @comment], url: photo_photo_comments_path(@photo), method: :post, local: false do |f| %>
+        <%= f.text_area :comment, placeholder: "ぜひコメントしてください！", class: "form-control m-3" %>
         <p class="text-right"><%= f.submit "送信する", class: "btn btn-info" %></p>
       <% end %>
     </div>

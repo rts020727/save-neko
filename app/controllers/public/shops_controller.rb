@@ -7,6 +7,7 @@ class Public::ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    @comment = ShopComment.new
     @cats = @shop.cats.page(params[:page]).per(3).order('updated_at DESC')
     @events = @shop.events
     @current_month_events = @shop.events.where(start_time: Time.now.all_month)

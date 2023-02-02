@@ -40,7 +40,7 @@
     </div>
 
     <div>
-      <small class="<%= "comment-count" + photo.id.to_s %> mr-3">コメント数：<%= photo.comments.count %></small>
+      <small class="<%= "comment-count" + photo.id.to_s %> mr-3">コメント数：<%= photo.photo_comments.count %></small>
       <small class=<%= "favorite-btn-count" + photo.id.to_s %>>いいね数：<%= photo.favorites.count %></small>
     </div>
     <% end %>

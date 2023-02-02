@@ -1,22 +1,22 @@
-<% if photo.photo_comments.present? %>
-  <% photo.photo_comments.each do |photo_comment| %>
+<% if shop.shop_comments.present? %>
+  <% shop.shop_comments.each do |shop_comment| %>
     <div class="row position-relative justify-content-center m-5 bg-white">
       <div class="col-md-4 p-md-4 text-center">
-        <%= image_tag photo_comment.user.get_image(100,100), class: "bd-placeholder-img w-75 rounded m-3" %>
+        <%= image_tag shop_comment.user.get_image(100,100), class: "bd-placeholder-img w-75 rounded m-3" %>
       </div>
       <div class="col-md-8 position-static p-4 pl-md-0 text-left">
         <div class="ml-3">
-          <% if photo_comment.user.is_deleted == false %>
-            <p class="mt-4">-<%= photo_comment.user.name %>さんのコメント-</p>
+          <% if shop_comment.user.is_deleted == false %>
+            <p class="mt-4">-<%= shop_comment.user.name %>さんのコメント-</p>
           <% else %>
             <p class="mt-4">-退会済みユーザーのコメント-</p>
           <% end %>
-          <p class="mx-2"><%= safe_join(photo_comment.comment.split("\n"), tag(:br)) %></p>
+          <p class="mx-2"><%= safe_join(shop_comment.comment.split("\n"), tag(:br)) %></p>
 
           <!--コメントしたユーザーまたは、投稿した店舗ユーザーであれば削除ボタン表示-->
-          <% if photo_comment.user == current_user %>
+          <% if shop_comment.user == current_user %>
             <p class="text-right">
-              <%= link_to photo_photo_comment_path(photo.id, photo_comment.id), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
+              <%= link_to shop_shop_comment_path(shop.id, shop_comment.id), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
                 削除する<i class="fas fa-trash-alt"></i>
               <% end %>
             </p>

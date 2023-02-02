@@ -3,6 +3,8 @@ class Public::ShopCommentsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @comment = current_user.shop_comments.new(comment_params)
     @comment.shop_id = @shop.id
+    @comment.score = Language.get_data(comment_params[:comment])
+    @comment.save
     unless @comment.save
       render 'error'
     end

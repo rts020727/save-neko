@@ -52,4 +52,5 @@ class Shop < ApplicationRecord
       Shop.where("name LIKE?", "%#{keyword}%")
     end
   end
+  
 end

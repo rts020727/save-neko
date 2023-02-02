@@ -10,7 +10,16 @@
   <div class='row justify-content-center round-all bg-white mt-5 pt-4'>
     <%= render "shop", shop: @shop %>
   </div>
-  <a id="comments"><h1 class="text-center m-5">- COMMENTS -</h1></a>
+  <a id="comments"><h1 class="text-center mt-5">- COMMENTS -</h1></a>
+  <p class="text-center mt-5">
+    投稿されたコメントの内容が、ポジティブな内容かネガティブな内容かを自動的に判断し、顔文字を表示します。<br>
+    お店の評価の参考にしてください！<br>
+    とてもいい：<i class="far fa-laugh-beam"></i>、
+    いい：<i class="far fa-laugh"></i>、
+    ふつう：<i class="far fa-meh"></i>、
+    いまいち：<i class="far fa-frown-open"></i>、
+    ざんねん：<i class="far fa-tired"></i>
+  </p>
   <div class="row justify-content-center">
     <div class="col-md-7 <%= "comment-index" + @shop.id.to_s %>">
       <%= render "comment", shop: @shop %>

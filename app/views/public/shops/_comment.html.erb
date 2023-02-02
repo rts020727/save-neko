@@ -6,13 +6,30 @@
       </div>
       <div class="col-md-8 position-static p-4 pl-md-0 text-left">
         <div class="ml-3">
-          <% if shop_comment.user.is_deleted == false %>
-            <p class="mt-4">-<%= shop_comment.user.name %>さんのコメント-</p>
-          <% else %>
-            <p class="mt-4">-退会済みユーザーのコメント-</p>
-          <% end %>
+          <p class="mt-4">
+            <% if shop_comment.user.is_deleted == false %>
+              -<%= shop_comment.user.name %>さんのコメント-
+            <% else %>
+              -退会済みユーザーのコメント-
+            <% end %>
+            <!--Natural Language によってコメント内容の感情分析-->
+            <span class="sentiment-score text-green h5">
+              <% if shop_comment.score.to_f > 0.6 %>
+                <i class="far fa-laugh-beam"></i>
+              <% elsif shop_comment.score.to_f > 0.2%>
+                <i class="far fa-laugh"></i>
+              <% elsif shop_comment.score.to_f > -0.2 %>
+                <i class="far fa-meh"></i>
+              <% elsif shop_comment.score.to_f > -0.6 %>
+                <i class="far fa-frown-open"></i>
+              <% else %>
+                <i class="far fa-tired"></i>
+              <% end %>
+            </span>
+          </p>
           <p class="mx-2"><%= safe_join(shop_comment.comment.split("\n"), tag(:br)) %></p>
 
+          
           <!--コメントしたユーザーまたは、投稿した店舗ユーザーであれば削除ボタン表示-->
           <% if shop_comment.user == current_user %>
             <p class="text-right">

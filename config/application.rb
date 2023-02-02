@@ -14,6 +14,8 @@ module SaveNeko
     config.i18n.default_locale = :ja
     
     Faker::Config.locale = :ja
+    
+    config.paths.add 'lib', eager_load: true
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 describe '投稿のテスト' do
-  # let(:shop) { create(:shop) }
-  # let!(:photo) { create(:photo, title: 'hoge', content: 'content', shop_id: 1 ) }
+  let(:shop) { create(:shop) }
+  let!(:photo) { create(:photo, title: 'hoge', content: 'content', shop_id: 1 ) }
   describe 'TOP画面(root_path)のテスト'
   before do
     visit root_path

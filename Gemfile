@@ -49,6 +49,7 @@ group :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem "factory_bot_rails"
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -72,5 +73,3 @@ gem "net-imap"
 gem 'kaminari','~> 1.2.1'
 
 gem 'geocoder'
-
-gem 'faker'

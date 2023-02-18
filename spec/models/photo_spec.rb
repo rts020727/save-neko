@@ -35,7 +35,7 @@ RSpec.describe 'photoモデルのテスト', type: :model do
   describe 'アソシエーションのテスト' do
     context 'Shopモデルとの関係' do
       it 'N:1となっている' do
-        expect(Book.reflect_on_association(:user).macro).to eq :belongs_to
+        expect(Photo.reflect_on_association(:shop).macro).to eq :belongs_to
       end
     end
   end

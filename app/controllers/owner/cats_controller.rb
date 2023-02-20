@@ -1,5 +1,6 @@
 class Owner::CatsController < ApplicationController
   before_action :authenticate_shop!
+  before_action :is_matching_login_shop, except: [:index]
 
   def new
     @cat = Cat.new
@@ -52,8 +53,12 @@ class Owner::CatsController < ApplicationController
   def cat_params
     params.require(:cat).permit(:name, :gender, :feature, :introduction, :image)
   end
-
-  def redirect_root
-    redirect_to root_path unless shop_signed_in?
+  
+  # ログインしている店舗ユーザー以外の情報へアクセスした場合トップページへ
+  def is_matching_login_shop
+    cat = Cat.find(params[:id])
+    unless cat.shop_id == current_shop.id
+      redirect_to root_path
+    end
   end
 end

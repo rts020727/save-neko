@@ -1,6 +1,7 @@
 class Owner::ShopsController < ApplicationController
   before_action :authenticate_shop!
-  before_action :set_user
+  before_action :set_shop
+  before_action :is_matching_login_shop
   
   def show
   end
@@ -32,8 +33,16 @@ class Owner::ShopsController < ApplicationController
   
   private
   
-  def set_user
+  def set_shop
     @shop = Shop.find(params[:id])
+  end
+  
+  # ログインしている店舗ユーザー以外の情報へアクセスした場合トップページへ
+  def is_matching_login_shop
+    shop_id = params[:id].to_i
+    unless shop_id == current_shop.id
+      redirect_to root_path
+    end
   end
   
   def shop_params

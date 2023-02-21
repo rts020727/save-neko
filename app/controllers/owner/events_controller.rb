@@ -1,6 +1,6 @@
 class Owner::EventsController < ApplicationController
   before_action :authenticate_shop!
-  before_action :is_matching_login_shop, except: [:index]
+  before_action :is_matching_login_shop, only: [:show, :edit, :update, :destroy]
   
   def index
     @events = current_shop.events

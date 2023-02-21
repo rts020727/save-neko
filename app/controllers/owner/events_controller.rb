@@ -1,5 +1,6 @@
 class Owner::EventsController < ApplicationController
   before_action :authenticate_shop!
+  before_action :is_matching_login_shop, except: [:index]
   
   def index
     @events = current_shop.events
@@ -50,6 +51,13 @@ class Owner::EventsController < ApplicationController
   
   
   private
+  
+  def is_matching_login_shop
+    event = Event.find(params[:id])
+    unless event.shop_id == current_shop.id
+      redirect_to root_path
+    end
+  end
   
   def event_params
     params.require(:event).permit(:title, :content, :start_time)

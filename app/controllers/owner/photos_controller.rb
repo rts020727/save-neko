@@ -1,5 +1,6 @@
 class Owner::PhotosController < ApplicationController
   before_action :authenticate_shop!
+  before_action :is_matching_login_shop, only: [:show, :edit, :update, :destroy]
   
   def new
     @photo = Photo.new
@@ -49,6 +50,13 @@ class Owner::PhotosController < ApplicationController
   end
   
   private
+  
+  def is_matching_login_shop
+    photo = Photo.find(params[:id])
+    unless photo.shop_id == current_shop.id
+      redirect_to root_path
+    end
+  end
   
   def photo_params
     params.require(:photo).permit(:title, :content, :image)

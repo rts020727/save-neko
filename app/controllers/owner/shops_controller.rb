@@ -2,13 +2,13 @@ class Owner::ShopsController < ApplicationController
   before_action :authenticate_shop!
   before_action :set_shop
   before_action :is_matching_login_shop
-  
+
   def show
   end
 
   def edit
   end
-  
+
   def update
     if @shop.update(shop_params)
       flash[:notice] = "編集の保存に成功しました！"
@@ -29,14 +29,14 @@ class Owner::ShopsController < ApplicationController
       redirect_to root_path
     end
   end
-  
-  
+
+
   private
-  
+
   def set_shop
     @shop = Shop.find(params[:id])
   end
-  
+
   # ログインしている店舗ユーザー以外の情報へアクセスした場合トップページへ
   def is_matching_login_shop
     shop_id = params[:id].to_i
@@ -44,9 +44,9 @@ class Owner::ShopsController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
   def shop_params
     params.require(:shop).permit(:name, :email, :address, :phone_number, :opening, :closed, :image)
   end
-  
+
 end
